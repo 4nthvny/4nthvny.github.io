@@ -2,9 +2,6 @@
 title: About Me
 layout: page
 ---
-
-# The Goat aka Me
-
 Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security professional. I’m passionate about digital defense and learning how things break so I can help fix them.
 
 This site is where I share:
