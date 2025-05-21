@@ -11,7 +11,7 @@ permalink: /writeups/bandit/level1/
 
 ### After Googling how to read files starting with -
 ![2025-05-21 12_43_24-ubuntu - How can I open a file whose name starts with _-__ - Server Fault](https://github.com/user-attachments/assets/cf6837f2-0377-4f83-9bd3-9d238eab7d86)
-
+[Serverfault](https://serverfault.com/questions/124659/how-can-i-open-a-file-whose-name-starts-with)
 I found that ./ should work so lets try it.
 
 ```bash
