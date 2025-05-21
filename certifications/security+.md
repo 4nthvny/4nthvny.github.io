@@ -7,5 +7,5 @@ permalink: /certifications/security+/
 
 I earned Security+ to build a solid foundation in cybersecurity...
 
-<!-- full write-up here -->
+<!-- full write-up here -->xx
 
