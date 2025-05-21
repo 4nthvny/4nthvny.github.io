@@ -1,5 +1,5 @@
 ---
-title: "Write-Ups"
+title: Write-Ups
 layout: page
 feature_text: ""
 
