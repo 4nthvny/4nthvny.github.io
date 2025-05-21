@@ -13,9 +13,9 @@ permalink: /writeups/bandit/level1/
 
 ---
 
-### 🛠️ Commands Used:
+# After Googling how to read files starting with -, I found that ./ should work so lets try it.
 
-```bash
-ls
-cat ./-
+![2025-05-21 00_35_54-Window](https://github.com/user-attachments/assets/302b0fc9-a6cc-4b45-985e-d50efb8c994f)
+
+TaaaaDaaaa! 
 
