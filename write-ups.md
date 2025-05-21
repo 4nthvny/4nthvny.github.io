@@ -1,4 +1,5 @@
 ---
+title: Write-Ups
 layout: page
 ---
 
