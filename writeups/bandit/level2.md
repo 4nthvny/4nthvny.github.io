@@ -11,6 +11,8 @@ permalink: /writeups/bandit/level2/
 ### Once again utilizing google, I searched "spaces in filename" and this is what I found: 
 ![2025-05-21 13_09_07-How can I go to a directory whose file name has spaces between them in the Linux](https://github.com/user-attachments/assets/f11a154c-0a8e-4ca7-b2d3-8068f3626dbf)
 
+[Stackoverflow](https://stackoverflow.com/questions/23019471/how-can-i-go-to-a-directory-whose-file-name-has-spaces-between-them-in-the-linux)
+
 With this information, I tried what google said. Shoutout google and StackOverflow. 
 ```bash
 bandit2@bandit:~$ ls
