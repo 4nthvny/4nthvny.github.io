@@ -1,6 +1,7 @@
 ---
-title: xD
-layout: categories
-excerpt: "Category index"
-aside: true
+title: Certifications 
+layout: page
 ---
+# Certifications
+
+Below are the certifications I have earned and my relections on each.
