@@ -5,7 +5,7 @@ layout: page
 
 # About Me
 
-Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security engineer. I’m passionate about digital defense, open-source tools, and learning how things break so I can help fix them.
+Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security professional. I’m passionate about digital defense and learning how things break so I can help fix them.
 
 This site is where I share:
 - 🛡️ Cybersecurity labs and writeups  
