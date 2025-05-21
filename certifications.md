@@ -4,4 +4,4 @@ layout: page
 ---
 Below are the certifications I have earned and my relections on each.
 
-- [CompTIA Security+ Reflection](/certifications/security+/)
+- [CompTIA Security+ Reflection](/Certifications/security+/)
