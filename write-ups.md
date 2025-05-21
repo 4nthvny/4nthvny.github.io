@@ -1,5 +1,5 @@
 ---
-title: Write-Ups
+title: ""
 layout: page
 ---
 
