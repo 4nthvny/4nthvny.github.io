@@ -1,6 +1,8 @@
 ---
-title: ""
+title: "Write-Ups"
 layout: page
+feature_text: ""
+
 ---
 # Certifications
 
