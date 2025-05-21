@@ -1,5 +1,4 @@
 ---
-title: Certifications
 layout: page
 
 
