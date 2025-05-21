@@ -1,7 +1,7 @@
 ---
 title: Write-Ups
 layout: page
-feature_text: ""
+
 ---
 
 # Writeups
