@@ -1,7 +1,7 @@
 ---
 title: Anthony
 feature_text: |
-  ## Anthony Rivera
+  ## Anthony's Blog
   Hi, I'm Anthony and this is my Blog! Here I will post HTB write-ups, personal reflections, and all things related to my journey in cybersecurity
 feature_image: "https://picsum.photos/1300/400?image=989"
 excerpt: ""
