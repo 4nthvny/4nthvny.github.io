@@ -9,7 +9,7 @@ Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security profess
 
 This site is where I share:
 - 🛡️ Cybersecurity labs and writeups  
-- 🧠 Notes from certifications and courses  
+- 🧠 Tips and advice on certifications
 - 📓 Personal reflections on learning and career
 
 You can find me on [GitHub](https://github.com/4nthvny) and [LinkedIn](https://www.linkedin.com/in/anthony-d-rivera/). Thanks for stopping by.
