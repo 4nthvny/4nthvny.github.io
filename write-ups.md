@@ -1,10 +1,8 @@
 ---
+title: Write-Ups
 layout: page
 
 ---
-
-# Writeups
-
 Below are all my public cybersecurity writeups:
 
 <ul>
