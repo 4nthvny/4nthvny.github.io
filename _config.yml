@@ -42,7 +42,7 @@ twitter:
   username: Anthony Rivera # jekyll-seo-tag > Owners twitter username
 author: Anthony Rivera # jekyll-seo-tag > default author
 social: # jekyll-seo-tag > social overrides
-  name: Anthony # jekyll-seo-tag > real name
+  name: 4nthvny # jekyll-seo-tag > real name
   links:  # jekyll-seo-tag > social aliases (sameAs)
     - https://www.linkedin.com/in/anthony-d-rivera
     - https://github.com/4nthvny
@@ -93,7 +93,7 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "Anthony's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "Hi, I'm Anthony and this is my Blog! Here I will post HTB write-ups, personal reflections, and things related to my journey in cybersecurity" # Site description and default description, also used in jekyll-seo-tag
+description: "" # Site description and default description, also used in jekyll-seo-tag
 url: "https://alembic.darn.es" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/davidda"
