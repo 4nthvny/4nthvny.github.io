@@ -17,7 +17,6 @@ I found that ./ should work so lets try it.
 ```bash
 bandit1@bandit:~$ ls
 -
-
 bandit1@bandit:~$ cat ./-
 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 ```
