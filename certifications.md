@@ -1,7 +1,7 @@
 ---
 title: Certifications
 layout: page
-feature_text: ""
+
 
 ---
 # Certifications
