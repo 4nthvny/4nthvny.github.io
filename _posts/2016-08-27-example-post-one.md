@@ -1,8 +1,5 @@
 ---
 title: Overthewire - Bandit
-categories:
-- General
-- External sources
 feature_image: /assets/logos/banditlogo.png
 ---
 
