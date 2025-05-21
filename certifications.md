@@ -1,5 +1,5 @@
 ---
-title: Write-Ups
+title: Certifications
 layout: page
 feature_text: ""
 
