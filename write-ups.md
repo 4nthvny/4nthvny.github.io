@@ -5,10 +5,7 @@ layout: page
 ---
 Below are all my public cybersecurity writeups:
 
-<ul>
-  {% for post in site.posts %}
-    {% if post.category == "writeups" %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
+Choose a category below:
+
+- [Bandit (OverTheWire)](/writeups/bandit/)
+- [Hack The Box](/writeups/hackthebox/) *(coming soon)
