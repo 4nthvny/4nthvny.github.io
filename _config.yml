@@ -124,9 +124,9 @@ navigation_header:
 - title: About me
   url: /
 - title: Write-Ups
-  url: /elements/
+  url: /write-ups/
 - title: Certifications
-  url: /blog/
+  url: /certifications/
 - title: Search
   url: /search/
 
