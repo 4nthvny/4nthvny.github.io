@@ -22,7 +22,7 @@ bandit1@bandit:~$ cat ./-
 ```
 TaaaaDaaaa! 
 ### Why this works?:
-- Simply doing ``` cat - ``` tells cat to read from standard input (stdin), not read a file names -. 
+- Simply doing ``` cat - ``` tells cat to read from standard input (stdin), not read a file named -. 
 - using ```./``` explicitly refers to the file named - in the current working directory.
 - another method that worked for me was ``` cat -- - ```
   
