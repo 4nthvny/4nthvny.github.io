@@ -9,5 +9,5 @@ excerpt: ""
 
 Thank you for visiting!
 
-{% include button.html text="Github" icon="github" link="https://github.com/4nthvny" color="#0366d6" %} {% include button.html text="LinkedIn" icon="Linkedin" link="https://www.linkedin.com/in/anthony-d-rivera" color="#0077B5" %} 
+{% include button.html text="Github" icon="github" link="https://github.com/4nthvny" color="#0366d6" %} {% include button.html text="LinkedIn" icon="linkedin" link="https://www.linkedin.com/in/anthony-d-rivera" color="#0077B5" %} 
 
