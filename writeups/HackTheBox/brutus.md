@@ -1,3 +1,9 @@
+---
+title: Brutus 
+layout: page
+permalink: /writeups/hackthebox/brutus
+---
+
 # Brutus Sherlock Write-Up
 
 **Analyze the auth.log. What is the IP address used by the attacker to carry out a brute force attack?** 
