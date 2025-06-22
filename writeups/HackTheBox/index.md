@@ -1,7 +1,7 @@
 ---
-title: Bandit Writeups
+title: HTB Writeups
 layout: page
-permalink: /writeups/HackTheBox/
+permalink: /writeups/hackthebox/
 ---
 Below are all my HackTheBox writeups:
 
