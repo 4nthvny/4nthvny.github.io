@@ -1,7 +1,7 @@
 ---
 title: Brutus 
 layout: page
-permalink: /writeups/hackthebox/brutus
+permalink: /writeups/HackTheBox/brutus
 ---
 
 # Brutus Sherlock Write-Up
