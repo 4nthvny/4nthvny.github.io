@@ -1,9 +1,9 @@
 ---
 title: Bandit Writeups
 layout: page
-permalink: /writeups/bandit/
+permalink: /writeups/HackTheBox/
 ---
-Below are all my Bandit OverTheWire writeups:
+Below are all my HackTheBox writeups:
 
 <ul>
   <li><a href="/writeups/HackTheBox/Brutus/">Brutus Sherlock</a></li>
