@@ -4,10 +4,10 @@ title: ""
 permalink: /
 excerpt: ""
 feature_text: |-
-  ### Anthony Rivera
-  # I like Computers.
+  # Anthony Rivera
+  #### I like Computers.
 
-  # idk what else to write here tbh...
+  #### idk what else to write here tbh...
   
 feature_image: ""   # optional — can leave blank
 ---
