@@ -2,7 +2,7 @@
 ---
 title: HTB Writeups
 layout: page
-permalink: /writeups/HackTheBox/
+permalink: /writeups/htb/
 ---
 Below are all my HackTheBox writeups:
 
