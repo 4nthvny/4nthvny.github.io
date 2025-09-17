@@ -19,7 +19,7 @@ feature_image: ""   # optional — can leave blank
   background: #000;
   color: #bdbcb9;
   padding: 20px;
-  border: 2px solid #00ff66; /* neon green border */
+  border: 2px solid #39ff14; /* neon green border */
   border-radius: 0; 
   font-family: "Fira Code", ui-monospace, monospace;
   line-height: 1.5;
