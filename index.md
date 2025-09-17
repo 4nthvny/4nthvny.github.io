@@ -30,8 +30,8 @@ feature_image: ""   # optional — can leave blank
   margin: 2rem 0;
   box-sizing: border-box;
 }
-  .prompt { color:#00ff66; font-weight:600; }
-  .cursor { animation: blink 1s steps(1) infinite; color:#00ff66; margin-left:4px; }
+  .prompt { color:#39ff14; font-weight:600; }
+  .cursor { animation: blink 1s steps(1) infinite; color:#39ff14; margin-left:4px; }
   @keyframes blink { 50% { opacity: 0 } }
   .line { margin: 0 0 .25rem 0; white-space: pre-wrap; font-size: 1.05rem; }
   .input-wrap { display:flex; gap:.6rem; align-items:center; }
