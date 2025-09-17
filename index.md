@@ -16,19 +16,20 @@ feature_image: ""   # optional — can leave blank
 <div id="terminal" aria-label="web terminal"></div>
 
 <style>
- #terminal {
+#terminal {
   background: #000;
   color: #c9d1d9;
   padding: 20px;
-  border: 2px solid #00ff66; /* <-- new border */
-  border-radius: 12px;
+  border: 2px solid #00ff66; /* neon green border */
+  border-radius: 0; 
   font-family: "Fira Code", ui-monospace, monospace;
   line-height: 1.5;
-  min-height: 320px;
-  max-width: 1100px;
-  overflow: auto;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  width: 100%;        /* takes full width of container */
+  max-width: 1100px;  /* optional: cap width */
+  height: 400px;      /* <- fixed height */
+  overflow-y: auto;   /* <- scroll when too much output */
   margin: 2rem 0;
+  box-sizing: border-box;
 }
   .prompt { color:#00ff66; font-weight:600; }
   .cursor { animation: blink 1s steps(1) infinite; color:#00ff66; margin-left:4px; }
