@@ -16,19 +16,20 @@ feature_image: ""   # optional — can leave blank
 <div id="terminal" aria-label="web terminal"></div>
 
 <style>
-  #terminal {
-    background: #000;
-    color: #c9d1d9;
-    padding: 20px;
-    border-radius: 12px;
-    font-family: "Fira Code", ui-monospace, monospace;
-    line-height: 1.5;
-    min-height: 320px;
-    max-width: 1100px;
-    overflow: auto;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    margin: 2rem 0;
-  }
+ #terminal {
+  background: #000;
+  color: #c9d1d9;
+  padding: 20px;
+  border: 2px solid #00ff66; /* <-- new border */
+  border-radius: 12px;
+  font-family: "Fira Code", ui-monospace, monospace;
+  line-height: 1.5;
+  min-height: 320px;
+  max-width: 1100px;
+  overflow: auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  margin: 2rem 0;
+}
   .prompt { color:#00ff66; font-weight:600; }
   .cursor { animation: blink 1s steps(1) infinite; color:#00ff66; margin-left:4px; }
   @keyframes blink { 50% { opacity: 0 } }
@@ -41,7 +42,7 @@ feature_image: ""   # optional — can leave blank
 document.addEventListener('DOMContentLoaded', () => {
   const term = document.getElementById('terminal');
   const PROMPT = 'anthony@home:~$';
-  const INTRO  = 'Linux anthony 6.6.9-amd64 x86_64 GNU/Linux\nType "help" for commands';
+  const INTRO  = 'Uhh.. Wut-amd64 x86_64 GNU/Linux\nType "help" for commands';
 
   // demo file contents
   const FILES = {
@@ -147,13 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
 - base64 -d flag.txt
 - certs 
 - job`,
-      'whoami': () => 'Anthony Rivera | Cybersecurity student | Security+',
+      'whoami': () => 'Hi, Im Anthony :D',
       'ls': () => 'flag.txt',
       'certs': () => `Certifications:
 - CompTIA Security+
 - Red Team Operator
 - Blue Team Level 1`,
-      'job': () => 'Currently seeking cybersecurity internships and security engineer roles.',
+      'job': () => 'Uhh chat.. Pls hire me? Internships?',
       'clear': () => { term.innerHTML = ''; return ''; }
     };
 
