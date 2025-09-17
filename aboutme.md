@@ -18,6 +18,7 @@ Collegiate Penetration Testing Competition(June 2025 - Present)
 Information Technology Competition - Security (Apr 2025)
 - Performed internal penetration testing across Kubernetes, Active Directory, AI services, and on-prem AWS, uncovering 10+ privilege escalation, container escape, API, and identity trust risks. Authored a 50+ page technical report with executive briefings on vulnerabilities, impacts, and remediation. Leveraged offensive insights to strengthen threat detection, IR, and AD hardening.
 
+---
 
 # This site is where I share:
 - 🛡️ Cybersecurity labs and writeups  
