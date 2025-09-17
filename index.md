@@ -11,14 +11,13 @@ feature_text: |-
   
 feature_image: ""   # optional — can leave blank
 ---
-
 <!-- START: Web Terminal -->
 <div id="terminal" aria-label="web terminal"></div>
 
 <style>
 #terminal {
   background: #000;
-  color: #c9d1d9;
+  color: #bdbcb9;
   padding: 20px;
   border: 2px solid #00ff66; /* neon green border */
   border-radius: 0; 
