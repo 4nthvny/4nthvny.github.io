@@ -36,6 +36,11 @@ feature_image: ""   # optional — can leave blank
   .line { margin: 0 0 .25rem 0; white-space: pre-wrap; font-size: 1.05rem; }
   .input-wrap { display:flex; gap:.6rem; align-items:center; }
   .input { outline:none; display:inline-block; color:#fff; min-width:4px; }
+
+  /* new rule to remove double cursor */
+  #input-line {
+    caret-color: transparent;
+  }
 </style>
 
 <script>
@@ -145,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 - whoami 
 - ls 
 - cat flag.txt
-- base64 -d flag.txt
+- base64 
 - certs 
 - job`,
       'whoami': () => 'Hi, Im Anthony :D',
@@ -165,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (flag === '-d' && target === 'flag.txt') {
         writeLine('chat will i get hired?');
       } else {
-        writeLine('usage: base64 -d flag.txt');
+        writeLine('usage: base64');
       }
       writeInputLine();
       return;
