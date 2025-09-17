@@ -163,19 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'clear': () => { term.innerHTML = ''; return ''; }
     };
 
-    // base64 -d flag.txt (special case)
-    if (cmd === 'base64') {
-      const flag = parts.shift(); // should be "-d"
-      const target = (parts.shift() || '').toLowerCase();
-      if (flag === '-d' && target === 'flag.txt') {
-        writeLine('chat will i get hired?');
-      } else {
-        writeLine('usage: base64');
-      }
-      writeInputLine();
-      return;
-    }
-
+    // base64 command (no arguments, just decodes the flag)
+if (cmd === 'base64') {
+  writeLine('chat will i get hired?');
+  writeInputLine();
+  return;
+}
     // cat flag.txt
     if (cmd === 'cat') {
       const target = (parts.shift() || '').toLowerCase();
