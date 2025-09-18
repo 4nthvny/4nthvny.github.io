@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ""
+title: "Anthony Rivera"
 permalink: /
 excerpt: ""
 feature_text: |-
