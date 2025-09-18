@@ -18,7 +18,6 @@ permalink: /
   align-items: center;      /* horizontal centering */
   justify-content: center;  /* vertical centering */
   min-height: 100vh;        /* fill full screen height */
-  text-align: center;
   gap: 12px;                /* space between elements */
 }
 .center-page h1,
