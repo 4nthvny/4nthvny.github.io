@@ -8,8 +8,6 @@ feature_text: |-
   #### I like Computers.
 
   #### idk what else to write here tbh...
-  
-feature_image: ""   # optional — can leave blank
 ---
 <!-- START: Web Terminal -->
 <div id="terminal" aria-label="web terminal"></div>
