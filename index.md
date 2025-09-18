@@ -2,15 +2,15 @@
 layout: page
 title: ""
 permalink: /
-feature_text: |-
-  # Anthony Rivera
-  #### I like Computers.
-
-  #### idk what else to write here tbh...
 ---
-<!-- START: Web Terminal -->
-<div id="terminal" aria-label="web terminal"></div>
+<div class="hero-tight">
+  <h1>Anthony Rivera</h1>
+  <h2>I like Computers.</h2>
+  <p>idk what else to write here tbh…</p>
 
+  <div id="terminal" aria-label="web terminal"></div>
+</div>
+<!-- START: Web Terminal -->
 <style>
 #terminal {
   background: #000;
