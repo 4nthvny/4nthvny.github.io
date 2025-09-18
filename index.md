@@ -25,7 +25,7 @@ feature_text: |-
   max-width: 1100px;  /* optional: cap width */
   height: 400px;      /* <- fixed height */
   overflow-y: auto;   /* <- scroll when too much output */
-  margin: 2rem 0;
+  margin: 1rem 0;
   box-sizing: border-box;
 }
   .prompt { color:#39ff14; font-weight:600; }
