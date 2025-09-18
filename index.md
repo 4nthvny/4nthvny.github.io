@@ -7,6 +7,7 @@ permalink: /
 ### I Like Computers :D
 ### Idk what else to write here tbh...
 
+<div id="terminal" aria-label="web terminal"></div>
 <!-- START: Web Terminal -->
 <style>
 #terminal {
