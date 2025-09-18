@@ -35,7 +35,7 @@ permalink: /
   height: 400px;      /* <- fixed height */
   overflow-y: auto;   /* <- scroll when too much output */
   margin: 0rem 0;'
-  text-align: left;
+  text-align: left; !important;
   box-sizing: border-box;
 }
   .prompt { color:#39ff14; font-weight:600; }
