@@ -5,11 +5,11 @@ permalink: /
 ---
 <div class="center-page">
   <h1>Anthony Rivera</h1>
-  <p><strong></strong>I Like Computers :D</strong><p>
+  <p><strong>I Like Computers :D</strong><p>
   <p><strong>Idk what else to write here tbh…</strong></p>
 
   <div id="terminal" aria-label="web terminal"></div>
-</div>
+
 <!-- START: Web Terminal -->
 <style>
 /* Center everything in the middle of the viewport */
