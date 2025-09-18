@@ -2,32 +2,14 @@
 layout: page
 title: ""
 permalink: /
+feature_text: |-
+  #Anthony Rivera 
+  #### I like computers :D
 ---
-<div class="center-page">
-  <h1>Anthony Rivera</h1>
-  <p><strong>I Like Computers :D</strong></p>
-
-  <div id="terminal" aria-label="web terminal"></div>
-</div>
-
 <!-- START: Web Terminal -->
+<div id="terminal" aria-label="web terminal"></div>
+  
 <style>
-/* Center everything in the middle of the viewport */
-.center-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* horizontal centering */
-  justify-content: center;  /* vertical centering */
-  min-height: 100vh;        /* fill full screen height */
-  gap: 12px;                /* space between elements */
-}
-
-.center-page h1,
-.center-page h2,
-.center-page p {
-  text-align: center;
-}
-
 /* Terminal box */
 #terminal {
   background: #000;
@@ -42,7 +24,6 @@ permalink: /
   height: 400px;      /* <- fixed height */
   overflow-y: auto;   /* <- scroll when too much output */
   margin: 0 auto;
-  text-align: left !important;  /* FIXED */
   box-sizing: border-box;
 }
   .prompt { color:#39ff14; font-weight:600; }
