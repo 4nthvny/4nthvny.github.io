@@ -3,13 +3,10 @@ layout: page
 title: ""
 permalink: /
 ---
-<div class="hero-tight">
-  <h1>Anthony Rivera</h1>
-  <h2>I like Computers.</h2>
-  <p>idk what else to write here tbh…</p>
+# Anthony Rivera
+### I Like Computers :D
+### Idk what else to write here tbh...
 
-  <div id="terminal" aria-label="web terminal"></div>
-</div>
 <!-- START: Web Terminal -->
 <style>
 #terminal {
