@@ -1,8 +1,7 @@
 ---
 layout: page
-title: "Anthony Rivera"
+title: ""
 permalink: /
-excerpt: ""
 feature_text: |-
   # Anthony Rivera
   #### I like Computers.
