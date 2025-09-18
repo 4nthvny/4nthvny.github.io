@@ -3,7 +3,7 @@ layout: page
 title: ""
 permalink: /
 feature_text: |-
-  #Anthony Rivera 
+  # Anthony Rivera 
   #### I like computers :D
 ---
 <!-- START: Web Terminal -->
