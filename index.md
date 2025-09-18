@@ -21,6 +21,11 @@ permalink: /
   text-align: center;
   gap: 12px;                /* space between elements */
 }
+.center-page h1,
+.center-page h2,
+.center-page p {
+  text-align: center;
+}
 
 #terminal {
   background: #000;
