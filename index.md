@@ -3,11 +3,13 @@ layout: page
 title: ""
 permalink: /
 ---
-# Anthony Rivera
-### I Like Computers :D
-### Idk what else to write here tbh...
+<div style="text-align:center; margin-top:40px;">
+  <h1>Anthony Rivera</h1>
+  <p>I Like Computers :D</p>
+  <p>Idk what else to write here tbh…</p>
 
-<div id="terminal" aria-label="web terminal"></div>
+  <div id="terminal" aria-label="web terminal"></div>
+</div>
 <!-- START: Web Terminal -->
 <style>
 #terminal {
