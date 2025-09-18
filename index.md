@@ -34,7 +34,8 @@ permalink: /
   max-width: 1100px;  /* optional: cap width */
   height: 400px;      /* <- fixed height */
   overflow-y: auto;   /* <- scroll when too much output */
-  margin: 0rem 0;
+  margin: 0rem 0;'
+  text-align: left;
   box-sizing: border-box;
 }
   .prompt { color:#39ff14; font-weight:600; }
