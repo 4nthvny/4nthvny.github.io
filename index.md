@@ -5,9 +5,10 @@ permalink: /
 ---
 <div class="center-page">
   <h1>Anthony Rivera</h1>
-  <p><strong>I Like Computers :D</strong><p>
+  <p><strong>I Like Computers :D</strong></p>
 
   <div id="terminal" aria-label="web terminal"></div>
+</div>
 
 <!-- START: Web Terminal -->
 <style>
@@ -20,26 +21,28 @@ permalink: /
   min-height: 100vh;        /* fill full screen height */
   gap: 12px;                /* space between elements */
 }
+
 .center-page h1,
 .center-page h2,
 .center-page p {
   text-align: center;
 }
 
+/* Terminal box */
 #terminal {
   background: #000;
   color: #bdbcb9;
   padding: 20px;
   border: 2px solid #39ff14; /* neon green border */
-  border-radius: 0; 
+  border-radius: 0;
   font-family: "Fira Code", ui-monospace, monospace;
   line-height: 1.5;
   width: 100%;        /* takes full width of container */
   max-width: 1100px;  /* optional: cap width */
   height: 400px;      /* <- fixed height */
   overflow-y: auto;   /* <- scroll when too much output */
-  margin: 0rem 0;'
-  text-align: left; !important;
+  margin: 0 auto;
+  text-align: left !important;  /* FIXED */
   box-sizing: border-box;
 }
   .prompt { color:#39ff14; font-weight:600; }
