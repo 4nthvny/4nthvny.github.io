@@ -12,11 +12,14 @@ Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security profess
 
 # Competitions 
 
-Collegiate Penetration Testing Competition(June 2025 - Present) 
+Collegiate Penetration Testing Competition (CPTC) (Jun 2025 - Present) 
 - Performed OSINT and source code analysis on public repositories to identify initial access vectors. Exploited misconfigured databases, web apps, Active Directory, and default credentials. Audited fictional organizations for security and compliance gaps, delivering reports on risks, issues, and remediation strategies to executives.
 
-Information Technology Competition - Security (Apr 2025)
+Information Technology Competition (ITC) - Security (Apr 2025)
 - Performed internal penetration testing across Kubernetes, Active Directory, AI services, and on-prem AWS, uncovering 10+ privilege escalation, container escape, API, and identity trust risks. Authored a 50+ page technical report with executive briefings on vulnerabilities, impacts, and remediation. Leveraged offensive insights to strengthen threat detection, IR, and AD hardening.
+
+National Cyber League (NCL) (Aug 2024 - Oct 2024)
+- Completed challenges in password cracking, traffic analysis, cryptography, forensics, OSINT, enumeration, and exploitation. Used tools like Hashcat, Wireshark, and Nmap to analyze data, identify vulnerabilities, and perform controlled exploits. Conducted OSINT investigations, log analysis, and hands-on exercises to strengthen detection, troubleshooting, and exploitation skills.
 
 ---
 
