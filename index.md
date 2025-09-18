@@ -3,15 +3,26 @@ layout: page
 title: ""
 permalink: /
 ---
-<div style="text-align:center; margin-top:40px;">
+<div class="center-page">
   <h1>Anthony Rivera</h1>
-  <p>I Like Computers :D</p>
-  <p>Idk what else to write here tbh…</p>
+  <p><strong></strong>I Like Computers :D</strong><p>
+  <p><strong>Idk what else to write here tbh…</strong></p>
 
   <div id="terminal" aria-label="web terminal"></div>
 </div>
 <!-- START: Web Terminal -->
 <style>
+/* Center everything in the middle of the viewport */
+.center-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontal centering */
+  justify-content: center;  /* vertical centering */
+  min-height: 100vh;        /* fill full screen height */
+  text-align: center;
+  gap: 12px;                /* space between elements */
+}
+
 #terminal {
   background: #000;
   color: #bdbcb9;
