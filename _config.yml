@@ -97,7 +97,7 @@ description: "" # Site description and default description, also used in jekyll-
 url: "https://alembic.darn.es" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/davidda"
-email: "anthony.d.rivera@outlook.copm"
+email: "anthony.d.rivera@outlook.com"
 # disqus: "alembic-1" # Blog post comments, uncomment the option and set the site ID from your Disqus account
 # date_format: "%-d %B %Y" # Blog post date formatting using placeholder formatting
 # google_analytics: ""
@@ -137,7 +137,7 @@ navigation_footer:
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
   LinkedIn: https://www.linkedin.com/in/anthony-d-rivera
   GitHub: https://github.com/4nthvny
-  link: https://4nthvny.github.io
+  link: https://4nthvny.com
   RSS: /feed.xml
 
 sharing_links: # Appear at the bottom of single blog posts, add as desired. The value can be 'true' or the desired button colour
