@@ -15,6 +15,9 @@ Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security profess
 Collegiate Penetration Testing Competition (CPTC) (Jun 2025 - Present) 
 - Performed OSINT and source code analysis on public repositories to identify initial access vectors. Exploited misconfigured databases, web apps, Active Directory, and default credentials. Audited fictional organizations for security and compliance gaps, delivering reports on risks, issues, and remediation strategies to executives.
 
+Collegiate Cyber Defense Competition (CCDC) (Jun 2025 - Present)
+- Developed custom scripts on Windows and Linux to automate vulnerability remediation and close initial access points. Managed cross-platform servers (HTTP/S, DNS, FTP, SMB, SSH, SMTP, MySQL) and supported business operations through system inventories, incident reporting, and user access management.
+
 Information Technology Competition (ITC) - Security (Apr 2025)
 - Performed internal penetration testing across Kubernetes, Active Directory, AI services, and on-prem AWS, uncovering 10+ privilege escalation, container escape, API, and identity trust risks. Authored a 50+ page technical report with executive briefings on vulnerabilities, impacts, and remediation. Leveraged offensive insights to strengthen threat detection, IR, and AD hardening.
 
