@@ -147,15 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
 - ls 
 - cat flag.txt
 - base64 
-- certs 
-- job`,
+- certs`,
       'whoami': () => 'Hi, Im Anthony :D',
       'ls': () => 'flag.txt',
       'certs': () => `Certifications:
 - CompTIA Security+
 - Red Team Operator
 - Blue Team Level 1`,
-      'job': () => 'Uhh chat.. Pls hire me? Internships?',
       'clear': () => { term.innerHTML = ''; return ''; }
     };
 
