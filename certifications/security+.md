@@ -4,7 +4,7 @@ layout: page
 permalink: /certifications/security+/
 ---
 
-# My Honest Review of CompTIA Security+
+# My Honest Review 
 
 The CompTIA Security+ certification is a great starting point for anyone who’s curious about cybersecurity and wants to understand how everything fits together. It gives you a solid baseline of knowledge across security concepts, tools, and technologies.
 
