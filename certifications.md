@@ -2,6 +2,7 @@
 title: Certifications
 layout: page
 ---
-Below are the certifications I have earned and my relections on each.
+Below are the certifications I have earned and my reviews on each.
 
-- [CompTIA Security+ Reflection](/certifications/security+.md/)
+- [CompTIA Security+](/certifications/security+.md/)
+- [Certified Red Team Operator](/certifcations/CRTO/)
