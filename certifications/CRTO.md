@@ -1,4 +1,4 @@
-#CRTO Honest Review
+# CRTO Honest Review
 
 The Red Team Ops certification by Zero-Point Security is an absolute gem in my opinion. It boosted my Active Directory knowledge significantly and gave me real experience working with a C2 (Cobalt Strike). For me, it was worth every dollar. I highly recommend this course to anyone who is curious about red teaming and wants to dive deeper into offensive security.
 
