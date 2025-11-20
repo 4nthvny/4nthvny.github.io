@@ -1,7 +1,7 @@
 ---
-title: Certified Red Team Operator
+title: Blue Team Level 1
 layout: page
-permalink: /certifications/CRTO/
+permalink: /certifications/BTL1/
 ---
 # My Honest Review
 
