@@ -32,4 +32,5 @@ I found it helpful to make a timeline during the exam to see when each artifact 
 In my experience, I’ve noticed a weird imbalance of resources when it comes to practical, hands-on training on the red teaming side versus the blue teaming side. There seem to be far more free resources for red teaming than for blue teaming. I find this interesting since there is seemingly more demand for defenders in corporate environments, but I could be entirely wrong, and this just turned into me ranting about nonsense.
 
 ## Final Thoughts
+---
 All in all, I think the Blue Team Level 1 Certification is a great attempt to close that gap. Although not completely free, it is affordable enough, worth the cost, and you get your money’s worth. I would definitely recommend this certification to people who genuinely have a desire to learn more about blue teaming and want hands-on training.
