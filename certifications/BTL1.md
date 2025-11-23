@@ -5,6 +5,8 @@ permalink: /certifications/BTL1/
 ---
 # My Honest Review
 ---
+<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/740e5292-ed7e-436e-9bbb-4f10cdbe433c" />
+---
 ## Background 
 ---
 The Blue Team Level 1 Certification by Security Blue Team is an excellent certification if you are looking for an introduction into the world of Digital Forensics and Incident Response (DFIR). It gives you real hands-on experience with engaging labs and a practical 24-hour exam that walks you through a full incident response scenario, from an attacker’s initial access all the way to recovering artifacts that led to a full domain compromise.
