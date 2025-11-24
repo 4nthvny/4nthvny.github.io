@@ -1,6 +1,7 @@
 ---
 title: Certified Red Team Operator
 layout: page
+date: 2025-11-11
 permalink: /certifications/CRTO/
 ---
 # My Honest Review
