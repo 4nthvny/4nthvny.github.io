@@ -9,13 +9,11 @@ feature_text: |-
 
 <style>
 /* === FULL-WIDTH GRID BREAKOUT === */
-/* Break out of Alembic's narrow column and use full viewport width */
 .home-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 40px;
 
-  /* full-bleed trick: ignore parent max-width */
   width: 100vw;
   max-width: none;
   position: relative;
@@ -26,7 +24,7 @@ feature_text: |-
 
   margin-top: 3rem;
   margin-bottom: 3rem;
-  padding: 0 5vw;  /* breathing room on sides */
+  padding: 0 5vw;
 }
 
 /* Stack on mobile */
@@ -36,40 +34,87 @@ feature_text: |-
   }
 }
 
-/* LEFT: BLOG / WRITE-UPS / CERTS LIST */
+/* LEFT: CARD LIST (WRITE-UPS / BLOGS / CERTS) */
 .blog-list h2 {
   font-size: 1.8rem;
   color: #39ff14;
   margin-bottom: 1rem;
 }
 
+/* Post card */
 .post-preview {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #222;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 16px;
+  background: #050505;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 0 1px #111;
 }
 
-.post-preview a {
-  color: #39ff14;
+@media (max-width: 700px) {
+  .post-preview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-preview a.post-title {
+  color: #f5f5f5;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
-.post-preview a:hover {
-  text-decoration: underline;
-}
-
-.post-date {
-  color: #888;
-  font-size: 0.85rem;
-  margin-top: 4px;
+.post-preview a.post-title:hover {
+  color: #39ff14;
 }
 
 .post-excerpt {
-  color: #ccc;
+  color: #b3b3b3;
   font-size: 0.95rem;
-  margin-top: 8px;
+  margin-top: 6px;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* optional tags/categories row */
+.post-tags span {
+  background: #111;
+  border-radius: 999px;
+  padding: 2px 10px;
+  border: 1px solid #222;
+}
+
+/* Right-side thumbnail */
+.post-thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-thumb img {
+  width: 100%;
+  height: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
 }
 
 /* RIGHT: TERMINAL COLUMN */
@@ -84,7 +129,7 @@ feature_text: |-
   background: #000;
   color: #bdbcb9;
   padding: 20px;
-  border: 2px solid #39ff14; /* neon green border */
+  border: 2px solid #39ff14;
   border-radius: 0;
   font-family: "Fira Code", ui-monospace, monospace;
   line-height: 1.5;
@@ -112,19 +157,51 @@ feature_text: |-
   <div class="blog-list">
     <h2>Write-Ups, Blogs, & Certs</h2>
 
-    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {%- comment -%}
+    Collect:
+      - all real posts in _posts (site.posts)
+      - all pages in /writeups/ and /certifications/
+      - (optionally) pages in /blog/ if you add that later
+    {%- endcomment -%}
 
-    {% for post in sorted_posts %}
-      {% if post.url contains '/blog/' or post.url contains '/writeups/' or post.url contains '/certifications/' %}
-        <div class="post-preview">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+    {%- assign all_docs = site.posts | concat: site.pages -%}
+    {%- assign cards = all_docs | where_exp: "d",
+        "d.url contains '/writeups/' or d.url contains '/certifications/' or d.url contains '/blog/'" -%}
+    {%- assign cards = cards | sort: "date" | reverse -%}
+
+    {%- for post in cards -%}
+      <div class="post-preview">
+        <div class="post-main">
+          <a class="post-title" href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+
           <p class="post-excerpt">
-            {{ post.excerpt | strip_html | truncate: 140 }}
+            {{ post.excerpt | default: post.description | strip_html | truncate: 150 }}
           </p>
+
+          <div class="post-meta">
+            {%- if post.date -%}
+              <span>{{ post.date | date: "%b %d, %Y" }}</span>
+            {%- endif -%}
+
+            {%- if post.categories and post.categories != empty -%}
+            <span class="post-tags">
+              {%- for cat in post.categories -%}
+                <span>{{ cat }}</span>
+              {%- endfor -%}
+            </span>
+            {%- endif -%}
+          </div>
         </div>
-      {% endif %}
-    {% endfor %}
+
+        <div class="post-thumb">
+          {%- if post.image -%}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
   </div>
 
   <!-- RIGHT SIDE: TERMINAL + BUTTONS -->
@@ -139,15 +216,13 @@ feature_text: |-
       const PROMPT = 'anthony@home:~$';
       const INTRO  = 'Uhh.. Wut-amd64 x86_64 GNU/Linux\nType "help" for commands';
 
-      // demo file contents
       const FILES = {
-        'flag.txt': 'Y2hhdCB3aWxsIGkgZ2V0IGhpcmVkPw==' // base64 of "chat will i get hired?"
+        'flag.txt': 'Y2hhdCB3aWxsIGkgZ2V0IGhpcmVkPw=='
       };
 
       const HISTORY = [];
       let histIdx = -1;
 
-      // utils
       const sanitize = (s) => { const d = document.createElement('div'); d.innerText = s; return d.innerHTML; };
 
       function writeLine(text, asCmd=false) {
@@ -196,7 +271,6 @@ feature_text: |-
         setTimeout(() => { input.focus(); placeCaretAtEnd(input); }, 0);
 
         input.addEventListener('keydown', (e) => {
-          // Ctrl+L -> clear
           if (e.ctrlKey && e.key.toLowerCase() === 'l') {
             e.preventDefault();
             term.innerHTML = '';
@@ -205,7 +279,6 @@ feature_text: |-
             return;
           }
 
-          // history
           if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
             e.preventDefault();
             if (!HISTORY.length) return;
@@ -216,7 +289,6 @@ feature_text: |-
             return;
           }
 
-          // Enter -> execute
           if (e.key === 'Enter') {
             e.preventDefault();
             const raw = input.innerText.trim();
@@ -249,14 +321,12 @@ feature_text: |-
           'clear': () => { term.innerHTML = ''; return ''; }
         };
 
-        // base64 command
         if (cmd === 'base64') {
           writeLine('chat will i get hired?');
           writeInputLine();
           return;
         }
 
-        // cat flag.txt
         if (cmd === 'cat') {
           const target = (parts.shift() || '').toLowerCase();
           if (!target) {
@@ -281,13 +351,11 @@ feature_text: |-
         writeInputLine();
       }
 
-      // click to focus
       term.addEventListener('click', () => {
         const i = document.getElementById('input-line');
         if (i) i.focus();
       });
 
-      // boot
       writeLine(INTRO);
       writeInputLine();
     });
