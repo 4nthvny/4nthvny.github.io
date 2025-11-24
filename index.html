@@ -27,7 +27,7 @@ permalink: /
     {%- assign cards = writeups | concat: certs | concat: blogs -%}
     {%- assign cards = cards | sort: "date" | reverse -%}
 
-    {%- for post in cards -%}
+    {%- for post in cards limit:2 -%}
       <article class="post-preview">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         {% if post.date %}
@@ -53,8 +53,8 @@ permalink: /
     </div>
 
     <div class="social-buttons">
-      <a class="btn-social" href="https://github.com/4nthvny" target="_blank">GitHub</a>
-      <a class="btn-social" href="https://www.linkedin.com/in/anthony-rivera-/" target="_blank">LinkedIn</a>
+      <a class="btn btn--primary" href="https://github.com/4nthvny" target="_blank">GitHub</a>
+      <a class="btn btn--primary" href="https://www.linkedin.com/in/anthony-rivera-/" target="_blank">LinkedIn</a>
     </div>
   </div>
 </div>
@@ -187,24 +187,11 @@ permalink: /
     color: #39ff14;
   }
 
-  /* SOCIAL BUTTONS */
+  /* SOCIAL BUTTONS LAYOUT (use theme's button styles) */
   .social-buttons {
     display: flex;
     gap: 1rem;
     justify-content: center;
-  }
-
-  .btn-social {
-    padding: 0.6rem 1.4rem;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    font-family: "Fira Code", ui-monospace, monospace;
-    font-size: 0.95rem;
-  }
-
-  .btn-social:hover {
-    filter: brightness(1.1);
   }
 </style>
 
