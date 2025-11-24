@@ -109,39 +109,45 @@ feature_text: |-
 
 <div class="home-grid">
   <!-- LEFT SIDE: WRITE-UPS / BLOGS / CERTS -->
-<div class="blog-list">
-  <h2>Recent Posts</h2>
+  <div class="blog-list">
+    <h2>Recent Posts</h2>
 
-  {%- assign filtered_posts = site.pages 
-      | where_exp: "p", "p.url contains '/blog/' or p.url contains '/writeups/' or p.url contains '/certifications/'"
-      | sort: "date"
-      | reverse
-  -%}
+    {%- assign sorted_pages = site.pages | sort: "date" | reverse -%}
+    {%- assign shown = 0 -%}
 
-  {%- for post in filtered_posts limit:2 -%}
-    <div class="post-preview">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <div class="post-date">
-        {{ post.date | date: "%B %d, %Y" }}
-      </div>
-      <p class="post-excerpt">
-        {{
-          post.excerpt
-            | default: post.content
-            | markdownify
-            | strip_html
-            | replace: "\n", " "
-            | replace: "*", ""
-            | replace: "#", ""
-            | replace: "`", ""
-            | replace: ">", ""
-            | strip
-            | truncate: 160
-        }}
-      </p>
-    </div>
-  {%- endfor -%}
-</div>
+    {%- for post in sorted_pages -%}
+      {%- if post.url -%}
+        {%- if post.url contains '/blog/' or post.url contains '/writeups/' or post.url contains '/certifications/' -%}
+          <div class="post-preview">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <div class="post-date">
+              {{ post.date | date: "%B %d, %Y" }}
+            </div>
+            <p class="post-excerpt">
+              {{
+                post.excerpt
+                  | default: post.content
+                  | markdownify
+                  | strip_html
+                  | replace: "\n", " "
+                  | replace: "*", ""
+                  | replace: "#", ""
+                  | replace: "`", ""
+                  | replace: ">", ""
+                  | strip
+                  | truncate: 160
+              }}
+            </p>
+          </div>
+
+          {%- assign shown = shown | plus: 1 -%}
+          {%- if shown >= 2 -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
 
   <!-- RIGHT SIDE: TERMINAL + BUTTONS -->
   <div class="terminal-col">
