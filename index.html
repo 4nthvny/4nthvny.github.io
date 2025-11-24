@@ -33,11 +33,11 @@ permalink: /
         {% if post.date %}
           <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
         {% endif %}
-        {% if post.excerpt %}
-          <p class="post-excerpt">
-            {{ post.excerpt | strip_html | truncate: 220 }}
-          </p>
-        {% endif %}
+
+        {% assign preview_source = post.excerpt | default: post.content %}
+        <p class="post-excerpt">
+          {{ preview_source | strip_html | truncate: 220 }}
+        </p>
       </article>
     {%- endfor -%}
   </div>
@@ -53,8 +53,19 @@ permalink: /
     </div>
 
     <div class="social-buttons">
-      <a class="btn btn--primary" href="https://github.com/4nthvny" target="_blank">GitHub</a>
-      <a class="btn btn--primary" href="https://www.linkedin.com/in/anthony-rivera-/" target="_blank">LinkedIn</a>
+      <a class="btn-social github" href="https://github.com/4nthvny" target="_blank">
+        <span class="btn-label">GitHub</span>
+        <span class="btn-icon">
+          <img src="{{ '/assets/icons/github.svg' | relative_url }}" alt="GitHub">
+        </span>
+      </a>
+
+      <a class="btn-social linkedin" href="https://www.linkedin.com/in/anthony-rivera-/" target="_blank">
+        <span class="btn-label">LinkedIn</span>
+        <span class="btn-icon">
+          <img src="{{ '/assets/icons/linkedin.svg' | relative_url }}" alt="LinkedIn">
+        </span>
+      </a>
     </div>
   </div>
 </div>
@@ -64,8 +75,8 @@ permalink: /
   /* === HERO TYPING TITLE === */
   .hero-type {
     text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;      /* tighter to navbar */
+    margin-bottom: 1.5rem; /* less gap above grid */
     font-family: "Fira Code", ui-monospace, monospace;
     font-size: 2.6rem;
   }
@@ -104,7 +115,7 @@ permalink: /
     margin-left: -50vw;
     margin-right: -50vw;
 
-    margin-top: 2rem;
+    margin-top: 0.5rem;  /* smaller gap under hero */
     margin-bottom: 3rem;
     padding: 0 5vw;
   }
@@ -167,7 +178,7 @@ permalink: /
     font-family: "Fira Code", ui-monospace, monospace;
     line-height: 1.5;
     width: 100%;
-    height: 400px;
+    height: 360px;          /* slightly shorter so it hugs content more */
     overflow-y: auto;
     box-sizing: border-box;
   }
@@ -187,11 +198,50 @@ permalink: /
     color: #39ff14;
   }
 
-  /* SOCIAL BUTTONS LAYOUT (use theme's button styles) */
+  /* SOCIAL BUTTONS: match your old style with logos */
   .social-buttons {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  .btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 210px;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    border: none;
+  }
+
+  .btn-social.github {
+    background: #2966d8;   /* bright blue like screenshot */
+    color: #000;
+  }
+
+  .btn-social.linkedin {
+    background: #2f73a3;
+    color: #000;
+  }
+
+  .btn-label {
+    flex: 1;
+  }
+
+  .btn-icon img {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
+
+  .btn-social:hover {
+    filter: brightness(1.05);
   }
 </style>
 
