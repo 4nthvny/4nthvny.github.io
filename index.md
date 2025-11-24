@@ -110,9 +110,9 @@ feature_text: |-
 <div class="home-grid">
   <!-- LEFT SIDE: WRITE-UPS / BLOGS / CERTS -->
   <div class="blog-list">
-    <h2>Write-Ups, Blogs, & Certs</h2>
+    <h2>Posts</h2>
 
-    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {% assign sorted_posts = site.pages | sort: "date" | reverse %}
 
     {% for post in sorted_posts %}
       {% if post.url contains '/blog/' or post.url contains '/writeups/' or post.url contains '/certifications/' %}
