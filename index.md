@@ -119,9 +119,15 @@ feature_text: |-
         <div class="post-preview">
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
           <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-          <p class="post-excerpt">
-            {{ post.excerpt | strip_html | truncate: 140 }}
-          </p>
+        <p class="post-excerpt">
+        {{ post.excerpt 
+            | default: post.content 
+            | replace: "\n", " " 
+            | strip_html 
+            | strip 
+            | truncate: 160 }}
+        </p>
+
         </div>
       {% endif %}
     {% endfor %}
