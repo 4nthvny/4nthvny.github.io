@@ -19,8 +19,12 @@ permalink: /
     <h2>Recent Posts</h2>
 
     {%- assign all_docs = site.posts | concat: site.pages -%}
-    {%- assign cards = all_docs | where_exp: "d",
-        "d.url contains '/writeups/' or d.url contains '/certifications/' or d.url contains '/blog/'" -%}
+
+    {%- assign writeups = all_docs | where_exp: "d", "d.url contains '/writeups/'" -%}
+    {%- assign certs    = all_docs | where_exp: "d", "d.url contains '/certifications/'" -%}
+    {%- assign blogs    = all_docs | where_exp: "d", "d.url contains '/blog/'" -%}
+
+    {%- assign cards = writeups | concat: certs | concat: blogs -%}
     {%- assign cards = cards | sort: "date" | reverse -%}
 
     {%- for post in cards -%}
