@@ -1,6 +1,7 @@
 ---
 title: Blue Team Level 1
 layout: page
+date: 2025-11-15
 permalink: /certifications/BTL1/
 ---
 # My Honest Review
