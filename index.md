@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Anthony Rivera" \n "Cybersecurity"
+title: "Anthony Rivera Cybersecurity"
 permalink: /
 ---
 
