@@ -40,6 +40,8 @@ feature_text: |-
 .blog-list h2 {
   font-size: 1.8rem;
   color: #39ff14;
+  margin-top: 0;
+  padding-top: 0;
   margin-bottom: 1rem;
 }
 
@@ -77,6 +79,7 @@ feature_text: |-
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding-top: 0;
 }
 
 /* === TERMINAL STYLES === */
