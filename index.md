@@ -40,7 +40,7 @@ feature_text: |-
 .blog-list h2 {
   font-size: 1.8rem;
   color: #39ff14;
-  margin-top: 0;
+  margin-top: 10px;
   padding-top: 0;
   margin-bottom: 1rem;
 }
@@ -95,6 +95,7 @@ feature_text: |-
   height: 400px;
   overflow-y: auto;
   box-sizing: border-box;
+  magin-top: 0;
 }
 
 .prompt { color:#39ff14; font-weight:600; }
