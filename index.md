@@ -110,7 +110,7 @@ feature_text: |-
 <div class="home-grid">
   <!-- LEFT SIDE: WRITE-UPS / BLOGS / CERTS -->
   <div class="blog-list">
-    <h2>Recent Posts</h2>
+    <h1>Recent Posts</h1>
 
     {%- assign sorted_pages = site.pages | sort: "date" | reverse -%}
     {%- assign shown = 0 -%}
