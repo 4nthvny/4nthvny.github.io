@@ -109,7 +109,7 @@ feature_text: |-
 
 <div class="home-grid">
   <!-- LEFT SIDE: WRITE-UPS / BLOGS / CERTS -->
-  <div class="blog-list">
+<div class="blog-list">
   <h2>Recent Posts</h2>
 
   {%- assign filtered_posts = site.pages 
@@ -142,7 +142,6 @@ feature_text: |-
     </div>
   {%- endfor -%}
 </div>
-
 
   <!-- RIGHT SIDE: TERMINAL + BUTTONS -->
   <div class="terminal-col">
