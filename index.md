@@ -8,23 +8,25 @@ feature_text: |-
 ---
 
 <style>
-/* Make the home page content full-width instead of a skinny column */
-.layout--page .typeset {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-/* === TWO-COLUMN LAYOUT () === */
+/* === FULL-WIDTH GRID BREAKOUT === */
+/* Break out of Alembic's narrow column and use full viewport width */
 .home-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 40px;
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 20px;
+
+  /* full-bleed trick: ignore parent max-width */
+  width: 100vw;
+  max-width: none;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 0 5vw;  /* breathing room on sides */
 }
 
 /* Stack on mobile */
@@ -87,8 +89,8 @@ feature_text: |-
   font-family: "Fira Code", ui-monospace, monospace;
   line-height: 1.5;
   width: 100%;
-  height: 400px;      /* fixed height */
-  overflow-y: auto;   /* scroll when too much output */
+  height: 400px;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
