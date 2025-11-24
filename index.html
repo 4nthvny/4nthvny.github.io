@@ -1,0 +1,227 @@
+---
+layout: page
+title: ""
+permalink: /
+---
+
+<!-- HERO: I am Anthony Rivera (typing in neon green) -->
+<div class="hero-type">
+  <span class="static-text">I am </span>
+  <span id="typing-name">
+    <span id="typed"></span><span id="cursor">|</span>
+  </span>
+</div>
+
+<!-- MAIN GRID: RECENT POSTS + TERMINAL -->
+<div class="home-grid">
+  <!-- LEFT SIDE: RECENT POSTS / WRITE-UPS / CERTS -->
+  <div class="blog-list">
+    <h2>Recent Posts</h2>
+
+    {%- assign all_docs = site.posts | concat: site.pages -%}
+    {%- assign cards = all_docs | where_exp: "d",
+        "d.url contains '/writeups/' or d.url contains '/certifications/' or d.url contains '/blog/'" -%}
+    {%- assign cards = cards | sort: "date" | reverse -%}
+
+    {%- for post in cards -%}
+      <article class="post-preview">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.date %}
+          <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+        {% endif %}
+        {% if post.excerpt %}
+          <p class="post-excerpt">
+            {{ post.excerpt | strip_html | truncate: 220 }}
+          </p>
+        {% endif %}
+      </article>
+    {%- endfor -%}
+  </div>
+
+  <!-- RIGHT SIDE: TERMINAL + BUTTONS -->
+  <div class="terminal-col">
+    <div id="terminal">
+      <p class="line">Uhh.. Wut-amd64 x86_64 GNU/Linux</p>
+      <p class="line">Type "help" for commands</p>
+      <p class="line">
+        <span class="prompt">anthony@home:~$</span><span class="cursor">█</span>
+      </p>
+    </div>
+
+    <div class="social-buttons">
+      <a class="btn-social" href="https://github.com/4nthvny" target="_blank">GitHub</a>
+      <a class="btn-social" href="https://www.linkedin.com/in/anthony-rivera-/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE-SPECIFIC STYLES -->
+<style>
+  /* === HERO TYPING TITLE === */
+  .hero-type {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 2.6rem;
+  }
+
+  .hero-type .static-text {
+    color: #cccccc;
+  }
+
+  #typing-name {
+    display: inline-block;
+    color: #39ff14; /* neon green for your name */
+  }
+
+  #cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: #39ff14;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* === FULL-WIDTH GRID BREAKOUT === */
+  .home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px;
+
+    width: 100vw;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0 5vw;
+  }
+
+  @media (max-width: 880px) {
+    .home-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* LEFT: BLOG LIST */
+  .blog-list h2 {
+    font-size: 1.8rem;
+    color: #39ff14;
+    margin-bottom: 1rem;
+  }
+
+  .post-preview {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .post-preview a {
+    color: #39ff14;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .post-preview a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .post-excerpt {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+
+  /* RIGHT: TERMINAL COLUMN */
+  .terminal-col {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  #terminal {
+    background: #000;
+    color: #bdbcb9;
+    padding: 20px;
+    border: 2px solid #39ff14;
+    font-family: "Fira Code", ui-monospace, monospace;
+    line-height: 1.5;
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .line {
+    margin: 0 0 .25rem 0;
+    white-space: pre-wrap;
+    font-size: 1.05rem;
+  }
+
+  .prompt {
+    color: #39ff14;
+    font-weight: 600;
+  }
+
+  .cursor {
+    color: #39ff14;
+  }
+
+  /* SOCIAL BUTTONS */
+  .social-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn-social {
+    padding: 0.6rem 1.4rem;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 0.95rem;
+  }
+
+  .btn-social:hover {
+    filter: brightness(1.1);
+  }
+</style>
+
+<!-- TYPING SCRIPT FOR NAME -->
+<script>
+  (function() {
+    const text = "Anthony Rivera";
+    const typed = document.getElementById("typed");
+    if (!typed) return;
+
+    let i = 0;
+
+    function typeName() {
+      typed.textContent = text.slice(0, i);
+      i++;
+
+      if (i <= text.length) {
+        setTimeout(typeName, 120); // typing speed
+      }
+    }
+
+    typeName();
+  })();
+</script>
