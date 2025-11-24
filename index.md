@@ -8,7 +8,16 @@ feature_text: |-
 ---
 
 <style>
-/* === TWO-COLUMN LAYOUT (like Jean) === */
+/* Make the home page content full-width instead of a skinny column */
+.layout--page .typeset {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* === TWO-COLUMN LAYOUT () === */
 .home-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
