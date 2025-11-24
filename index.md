@@ -1,10 +1,7 @@
 ---
 layout: page
-title: ""
+title: "Anthony Rivera" \n "Cybersecurity"
 permalink: /
-feature_text: |-
-  # Anthony Rivera 
-  #### I like computers :D
 ---
 
 <style>
