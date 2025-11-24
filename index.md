@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "Anthony Rivera Cybersecurity"
+title: "Anthony Rivera"
+subtitle: Cybersecurity 
 permalink: /
 ---
 
