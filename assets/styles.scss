@@ -4,3 +4,32 @@ styles: true
 ---
 
 @import "alembic";
+
+/* Make all pages full-width on desktop, with padding, and responsive on mobile */
+.main-content {
+  max-width: none;                     /* remove narrow column */
+  width: 100vw;                        /* span full viewport */
+  margin-left: calc(50% - 50vw);       /* break out of centered container */
+  margin-right: calc(50% - 50vw);
+  padding-left: 8vw;                   /* side padding so text isn't glued to edge */
+  padding-right: 8vw;
+}
+
+/* Optional: slightly tighter on very large screens */
+@media (min-width: 1600px) {
+  .main-content {
+    padding-left: 12vw;
+    padding-right: 12vw;
+  }
+}
+
+/* Mobile: keep it simple, just shrink padding */
+@media (max-width: 880px) {
+  .main-content {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
