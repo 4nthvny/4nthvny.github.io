@@ -5,23 +5,44 @@ styles: true
 
 @import "alembic";
 
-/* SITE-WIDE: make content full-width but keep it properly centered */
-.wrapper {
-  max-width: none !important;   /* remove narrow column */
-  width: 100% !important;       /* just use full page width */
-  margin: 0 auto !important;    /* keep it centered */
-  padding-left: 8vw !important; /* side padding */
+/* PAGE LAYOUT */
+.page,
+.page-content {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 8vw !important;
   padding-right: 8vw !important;
 }
 
+/* DEFAULT WRAPPER (for other layouts) */
+.wrapper,
 .content {
   max-width: none !important;
   width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 8vw !important;
+  padding-right: 8vw !important;
 }
 
-/* Mobile: reduce side padding a bit */
+/* POST LAYOUT */
+.post,
+.post-content {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 8vw !important;
+  padding-right: 8vw !important;
+}
+
+/* MOBILE */
 @media (max-width: 880px) {
-  .wrapper {
+  .page,
+  .page-content,
+  .wrapper,
+  .content,
+  .post,
+  .post-content {
     padding-left: 5vw !important;
     padding-right: 5vw !important;
   }
