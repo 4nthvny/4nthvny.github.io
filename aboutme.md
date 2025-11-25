@@ -2,7 +2,9 @@
 title: About Me
 layout: page
 ---
-Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security professional. I’m passionate about digital defense and learning how things break so I can help fix them. I graduated from Cal State Long Beach with a bachelors in Management Information Systems, and am currently attending Cal Poly Pomona - focusing on Information Security. 
+<div class="full-bleed-single">
+  
+Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security professional. I’m passionate about digital defense and learning how things break so I can help fix them. I graduated from Cal State Long Beach with a bachelor's in Management Information Systems, and am currently attending Cal Poly Pomona - focusing on Information Security. 
 
 # Certifications 
 
@@ -26,9 +28,27 @@ National Cyber League (NCL) (Aug 2024 - Oct 2024)
 
 ---
 
-# This site is where I share:
-- 🛡️ Cybersecurity labs and writeups  
-- 🧠 Tips and advice on certifications
-- 📓 Personal reflections on learning and career
-
 You can find me on [GitHub](https://github.com/4nthvny) and [LinkedIn](https://www.linkedin.com/in/anthony-d-rivera/). Thanks for stopping by.
+
+</div>
+
+<style>
+  .full-bleed-single {
+    width: 100vw;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+
+  @media (max-width: 880px) {
+    .full-bleed-single {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+</style>
