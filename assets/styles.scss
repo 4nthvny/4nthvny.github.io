@@ -5,31 +5,25 @@ styles: true
 
 @import "alembic";
 
-/* Make all pages full-width on desktop, with padding, and responsive on mobile */
-.main-content {
-  max-width: none;                     /* remove narrow column */
-  width: 100vw;                        /* span full viewport */
-  margin-left: calc(50% - 50vw);       /* break out of centered container */
-  margin-right: calc(50% - 50vw);
-  padding-left: 8vw;                   /* side padding so text isn't glued to edge */
-  padding-right: 8vw;
+/* SITE-WIDE: make content full-width but keep it properly centered */
+.wrapper {
+  max-width: none !important;   /* remove narrow column */
+  width: 100% !important;       /* just use full page width */
+  margin: 0 auto !important;    /* keep it centered */
+  padding-left: 8vw !important; /* side padding */
+  padding-right: 8vw !important;
 }
 
-/* Optional: slightly tighter on very large screens */
-@media (min-width: 1600px) {
-  .main-content {
-    padding-left: 12vw;
-    padding-right: 12vw;
-  }
+.content {
+  max-width: none !important;
+  width: 100% !important;
 }
 
-/* Mobile: keep it simple, just shrink padding */
+/* Mobile: reduce side padding a bit */
 @media (max-width: 880px) {
-  .main-content {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-    padding-left: 5vw;
-    padding-right: 5vw;
+  .wrapper {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
   }
 }
+
