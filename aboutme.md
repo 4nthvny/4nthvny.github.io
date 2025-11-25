@@ -2,7 +2,7 @@
 title: About Me
 layout: page
 ---
-<div class="full-bleed-single">
+<div class="full-bleed-single" markdown="1">
   
 Hi, I'm Anthony Rivera — a cybersecurity student and aspiring security professional. I’m passionate about digital defense and learning how things break so I can help fix them. I graduated from Cal State Long Beach with a bachelor's in Management Information Systems, and am currently attending Cal Poly Pomona - focusing on Information Security. 
 
