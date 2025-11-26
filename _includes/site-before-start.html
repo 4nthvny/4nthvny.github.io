@@ -1,1 +1,32 @@
 <!-- Overwrite this file with code you want before the closing head tag -->
+<style>
+  /* Make the main content area full-width on desktop,  
+     but keep some padding so it doesn't hug the edges */
+
+  .page,
+  .page-content,
+  .post,
+  .post-content,
+  .wrapper,
+  .content {
+    max-width: none;
+    width: 100%;
+    margin: 0; /* kill the "centered narrow column" */
+    padding-left: min(8vw, 64px);
+    padding-right: min(8vw, 64px);
+  }
+
+  /* Mobile: keep it stacked and comfortable */
+  @media (max-width: 880px) {
+    .page,
+    .page-content,
+    .post,
+    .post-content,
+    .wrapper,
+    .content {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+</style>
+
