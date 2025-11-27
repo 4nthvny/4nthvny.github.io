@@ -1,22 +1,25 @@
-<!-- Overwrite this file with code you want before the closing head tag -->
 <style>
-  /* Make the main content area full-width on desktop,  
-     but keep some padding so it doesn't hug the edges */
-
+  /* Full-bleed breakout for all main content, matching home page feel */
   .page,
   .page-content,
   .post,
   .post-content,
   .wrapper,
   .content {
-    max-width: none;
-    width: 100%;
-    margin: 0; /* kill the "centered narrow column" */
-    padding-left: 5vw;
-    padding-right: 5vw;
+    max-width: none !important;
+    width: 100vw !important;
+
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+
+    padding-left: 5vw !important;   /* same as .home-grid */
+    padding-right: 5vw !important;
   }
 
-  /* Mobile: keep it stacked and comfortable */
+  /* Mobile: no breakout, just normal full width with padding */
   @media (max-width: 880px) {
     .page,
     .page-content,
@@ -24,18 +27,20 @@
     .post-content,
     .wrapper,
     .content {
-      padding-left: 5vw;
-      padding-right: 5vw;
+      width: 100% !important;
+      left: auto;
+      right: auto;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 5vw !important;
+      padding-right: 5vw !important;
     }
   }
+
+  /* Neon green H2s */
   h2,
   .page-content h2,
   .post-content h2 {
     color: #39ff14 !important;
   }
 </style>
-
-
-
-
-
