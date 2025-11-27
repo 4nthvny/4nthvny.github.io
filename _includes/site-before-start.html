@@ -1,37 +1,29 @@
 <style>
-  /* Full-bleed breakout for all main content, matching home page feel */
+  /* Make main content WIDE but centered (no weird left shift) */
+  .wrapper,
+  .content {
+    max-width: none !important;   /* remove theme's narrow column */
+    width: 100% !important;
+  }
+
   .page,
   .page-content,
   .post,
-  .post-content,
-  .wrapper,
-  .content {
-    max-width: none !important;
-    width: 100vw !important;
-
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-
-    padding-left: 5vw !important;   /* same as .home-grid */
+  .post-content {
+    max-width: 1200px !important; /* nice wide width */
+    width: 100% !important;
+    margin: 0 auto !important;    /* center it */
+    padding-left: 5vw !important; /* match home vibe */
     padding-right: 5vw !important;
   }
 
-  /* Mobile: no breakout, just normal full width with padding */
+  /* Mobile: just keep it comfy */
   @media (max-width: 880px) {
     .page,
     .page-content,
     .post,
-    .post-content,
-    .wrapper,
-    .content {
-      width: 100% !important;
-      left: auto;
-      right: auto;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+    .post-content {
+      max-width: 100% !important;
       padding-left: 5vw !important;
       padding-right: 5vw !important;
     }
