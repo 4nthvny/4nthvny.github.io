@@ -31,14 +31,14 @@ https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d
 
 Information Technology Competition (ITC) - Security (Apr 2025)
 <p align="center" width="100%">
-    <img width="15%" src="https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d"> 
+    <img width="20%" src="https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d"> 
 </p>
 
 - Performed internal penetration testing across Kubernetes, Active Directory, AI services, and on-prem AWS, uncovering 10+ privilege escalation, container escape, API, and identity trust risks. Authored a 50+ page technical report with executive briefings on vulnerabilities, impacts, and remediation. Leveraged offensive insights to strengthen threat detection, IR, and AD hardening.
 
 National Cyber League (NCL) (Aug 2024 - Oct 2024)
 <p align="center" width="100%">
-    <img width="15%" src="https://github.com/user-attachments/assets/11ee1ac2-256f-4098-b81b-4d1f75b94fc1"> 
+    <img width="10%" src="https://github.com/user-attachments/assets/11ee1ac2-256f-4098-b81b-4d1f75b94fc1"> 
 </p>
 
 - Completed challenges in password cracking, traffic analysis, cryptography, forensics, OSINT, enumeration, and exploitation. Used tools like Hashcat, Wireshark, and Nmap to analyze data, identify vulnerabilities, and perform controlled exploits. Conducted OSINT investigations, log analysis, and hands-on exercises to strengthen detection, troubleshooting, and exploitation skills.
