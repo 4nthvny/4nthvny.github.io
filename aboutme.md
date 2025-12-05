@@ -15,7 +15,7 @@ Hi, I'm Anthony, I am currently a student at Cal Poly Pomona studying Informatio
 
 Collegiate Penetration Testing Competition (CPTC) (Jun 2025 - Present) 
 <p align="center" width="100%">
-    <img width="33%" src="https://github.com/user-attachments/assets/736dc450-ce00-4bcd-97c1-1e49b2b210de"> 
+    <img width="25%" src="https://github.com/user-attachments/assets/736dc450-ce00-4bcd-97c1-1e49b2b210de"> 
 </p>
 - Performed OSINT and source code analysis on public repositories to identify initial access vectors. Exploited misconfigured databases, web apps, Active Directory, and default credentials. Audited fictional organizations for security and compliance gaps, delivering reports on risks, issues, and remediation strategies to executives.
 
