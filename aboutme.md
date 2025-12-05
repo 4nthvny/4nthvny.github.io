@@ -27,8 +27,6 @@ Collegiate Cyber Defense Competition (CCDC) (Jun 2025 - Present)
 
 - Developed custom scripts on Windows and Linux to automate vulnerability remediation and close initial access points. Managed cross-platform servers (HTTP/S, DNS, FTP, SMB, SSH, SMTP, MySQL) and supported business operations through system inventories, incident reporting, and user access management.
 
-https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d
-
 Information Technology Competition (ITC) - Security (Apr 2025)
 <p align="center" width="100%">
     <img width="20%" src="https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d"> 
