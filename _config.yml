@@ -127,11 +127,9 @@ navigation_header:
   url: /write-ups/
 - title: Certifications
   url: /certifications/
-- title: Search
-  url: /search/
 
 navigation_footer:
-- title: Anthony = The Goat
+- title: I Be Bloggin'
   
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
