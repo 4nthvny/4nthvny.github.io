@@ -17,15 +17,30 @@ Collegiate Penetration Testing Competition (CPTC) (Jun 2025 - Present)
 <p align="center" width="100%">
     <img width="15%" src="https://github.com/user-attachments/assets/736dc450-ce00-4bcd-97c1-1e49b2b210de"> 
 </p>
+
 - Performed OSINT and source code analysis on public repositories to identify initial access vectors. Exploited misconfigured databases, web apps, Active Directory, and default credentials. Audited fictional organizations for security and compliance gaps, delivering reports on risks, issues, and remediation strategies to executives.
 
 Collegiate Cyber Defense Competition (CCDC) (Jun 2025 - Present)
+<p align="center" width="100%">
+    <img width="15%" src="https://github.com/user-attachments/assets/176ec487-cd07-426f-97b7-a91090e1d26d"> 
+</p>
+
 - Developed custom scripts on Windows and Linux to automate vulnerability remediation and close initial access points. Managed cross-platform servers (HTTP/S, DNS, FTP, SMB, SSH, SMTP, MySQL) and supported business operations through system inventories, incident reporting, and user access management.
 
+https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d
+
 Information Technology Competition (ITC) - Security (Apr 2025)
+<p align="center" width="100%">
+    <img width="15%" src="https://github.com/user-attachments/assets/79c4a47a-9620-4c91-96da-c23a1e66207d"> 
+</p>
+
 - Performed internal penetration testing across Kubernetes, Active Directory, AI services, and on-prem AWS, uncovering 10+ privilege escalation, container escape, API, and identity trust risks. Authored a 50+ page technical report with executive briefings on vulnerabilities, impacts, and remediation. Leveraged offensive insights to strengthen threat detection, IR, and AD hardening.
 
 National Cyber League (NCL) (Aug 2024 - Oct 2024)
+<p align="center" width="100%">
+    <img width="15%" src="https://github.com/user-attachments/assets/11ee1ac2-256f-4098-b81b-4d1f75b94fc1"> 
+</p>
+
 - Completed challenges in password cracking, traffic analysis, cryptography, forensics, OSINT, enumeration, and exploitation. Used tools like Hashcat, Wireshark, and Nmap to analyze data, identify vulnerabilities, and perform controlled exploits. Conducted OSINT investigations, log analysis, and hands-on exercises to strengthen detection, troubleshooting, and exploitation skills.
 
 ---
