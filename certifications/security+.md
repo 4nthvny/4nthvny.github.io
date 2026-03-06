@@ -1,6 +1,7 @@
 ---
 title: CompTIA Security+ 
-layout: page
+layout: post
+date: 2025-05-21
 permalink: /certifications/security+/
 ---
 # My Honest Review 

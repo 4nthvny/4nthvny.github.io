@@ -1,61 +1,133 @@
-.hll { background-color: #ffffcc }
-.c { color: #999988; font-style: italic } /* Comment */
-.err { color: #a61717; background-color: #e3d2d2 } /* Error */
-.k { color: #000000; font-weight: bold } /* Keyword */
-.o { color: #000000; font-weight: bold } /* Operator */
-.cm { color: #999988; font-style: italic } /* Comment.Multiline */
-.cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.Preproc */
-.c1 { color: #999988; font-style: italic } /* Comment.Single */
-.cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
-.gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
-.ge { color: #000000; font-style: italic } /* Generic.Emph */
-.gr { color: #aa0000 } /* Generic.Error */
-.gh { color: #999999 } /* Generic.Heading */
-.gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
-.go { color: #888888 } /* Generic.Output */
-.gp { color: #555555 } /* Generic.Prompt */
-.gs { font-weight: bold } /* Generic.Strong */
-.gu { color: #aaaaaa } /* Generic.Subheading */
-.gt { color: #aa0000 } /* Generic.Traceback */
-.kc { color: #000000; font-weight: bold } /* Keyword.Constant */
-.kd { color: #000000; font-weight: bold } /* Keyword.Declaration */
-.kn { color: #000000; font-weight: bold } /* Keyword.Namespace */
-.kp { color: #000000; font-weight: bold } /* Keyword.Pseudo */
-.kr { color: #000000; font-weight: bold } /* Keyword.Reserved */
-.kt { color: #445588; font-weight: bold } /* Keyword.Type */
-.m { color: #009999 } /* Literal.Number */
-.s { color: #d01040 } /* Literal.String */
-.na { color: #008080 } /* Name.Attribute */
-.nb { color: #0086B3 } /* Name.Builtin */
-.nc { color: #445588; font-weight: bold } /* Name.Class */
-.no { color: #008080 } /* Name.Constant */
-.nd { color: #3c5d5d; font-weight: bold } /* Name.Decorator */
-.ni { color: #800080 } /* Name.Entity */
-.ne { color: #990000; font-weight: bold } /* Name.Exception */
-.nf { color: #990000; font-weight: bold } /* Name.Function */
-.nl { color: #990000; font-weight: bold } /* Name.Label */
-.nn { color: #555555 } /* Name.Namespace */
-.nt { color: #000080 } /* Name.Tag */
-.nv { color: #008080 } /* Name.Variable */
-.ow { color: #000000; font-weight: bold } /* Operator.Word */
-.w { color: #bbbbbb } /* Text.Whitespace */
-.mf { color: #009999 } /* Literal.Number.Float */
-.mh { color: #009999 } /* Literal.Number.Hex */
-.mi { color: #009999 } /* Literal.Number.Integer */
-.mo { color: #009999 } /* Literal.Number.Oct */
-.sb { color: #d01040 } /* Literal.String.Backtick */
-.sc { color: #d01040 } /* Literal.String.Char */
-.sd { color: #d01040 } /* Literal.String.Doc */
-.s2 { color: #d01040 } /* Literal.String.Double */
-.se { color: #d01040 } /* Literal.String.Escape */
-.sh { color: #d01040 } /* Literal.String.Heredoc */
-.si { color: #d01040 } /* Literal.String.Interpol */
-.sx { color: #d01040 } /* Literal.String.Other */
-.sr { color: #009926 } /* Literal.String.Regex */
-.s1 { color: #d01040 } /* Literal.String.Single */
-.ss { color: #990073 } /* Literal.String.Symbol */
-.bp { color: #999999 } /* Name.Builtin.Pseudo */
-.vc { color: #008080 } /* Name.Variable.Class */
-.vg { color: #008080 } /* Name.Variable.Global */
-.vi { color: #008080 } /* Name.Variable.Instance */
-.il { color: #009999 } /* Literal.Number.Integer.Long */
+/* Make code blocks feel less like a giant box */
+.highlight {
+  background: #1e1e1e;          
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;              /* remove heavy glow/box look */
+}
+
+.highlight pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow-x: auto;
+}
+
+.highlight code {
+  background: transparent;
+  color: inherit;
+}
+
+/* Optional: shrink the overall “chunkiness” a bit */
+.highlight pre, .highlight code {
+  font-size: 0.95em;
+  line-height: 1.55;
+}
+
+/* Remove/soften line highlight background if it looks weird */
+.highlight .hll { background: rgba(255,255,255,0.06); }
+
+/* ---------- Token colors (Rouge / Pygments-style classes) ---------- */
+/* Comments */
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #6a9955;  
+  font-style: italic;
+}
+
+/* Errors */
+.highlight .err { color: #f44747; background: rgba(244,71,71,0.12); }
+
+/* Keywords */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt {
+  color: #569cd6;  
+  font-weight: 600;
+}
+
+/* Operators */
+.highlight .o, .highlight .ow { color: #d4d4d4; }
+
+/* Numbers */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi,
+.highlight .mo, .highlight .il {
+  color: #b5cea8;  
+}
+
+/* Strings */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd,
+.highlight .s1, .highlight .s2, .highlight .se, .highlight .sh,
+.highlight .si, .highlight .sr, .highlight .ss, .highlight .sx {
+  color: #ce9178;  
+}
+
+/* Function / method names */
+.highlight .nf { color: #dcdcaa; } 
+
+/* Class names / types */
+.highlight .nc, .highlight .nn { color: #4ec9b0; } 
+
+/* Variables / attributes */
+.highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
+  color: #9cdcfe; 
+}
+
+/* Constants */
+.highlight .no { color: #4fc1ff; }
+
+/* Decorators / annotations */
+.highlight .nd { color: #c586c0; } 
+
+/* Regex */
+.highlight .sr { color: #d16969; }
+
+/* Prompt-ish */
+.highlight .gp { color: rgba(212,212,212,0.7); }
+
+/* Whitespace */
+.highlight .w { color: rgba(212,212,212,0.25); }
+
+/* =========================================================
+   Minimal VS Code style — no double box, sharp edges
+   ========================================================= */
+
+/* Outer wrapper */
+.highlight {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 14px 16px;
+  margin: 16px 0;
+
+  border: none;          /* remove border */
+  border-radius: 0;      /* sharp corners */
+  box-shadow: none;      /* remove glow */
+}
+
+/* Remove inner box look */
+.highlight pre {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove code background */
+.highlight code {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Sometimes Alembic adds figure wrapper */
+figure.highlight {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove weird line highlight bg */
+.highlight .hll {
+  background: rgba(255,255,255,0.05);
+}

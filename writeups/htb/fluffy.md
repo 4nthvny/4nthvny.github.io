@@ -1,8 +1,11 @@
 ---
 title: Fluffy 
-layout: page
+layout: post
+date: 2025-09-17
 permalink: /writeups/htb/fluffy
 ---
+
+ **Nmap :p**
 
 <img width="1033" height="696" alt="image" src="https://github.com/user-attachments/assets/41ba983f-9eb1-48c3-b50f-096a3d10638b" />
 

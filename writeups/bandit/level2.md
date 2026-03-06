@@ -1,6 +1,7 @@
 ---
 title: Bandit Level 2 → Level 3
-layout: page
+layout: post
+date: 2025-05-21
 permalink: /writeups/bandit/level2/
 ---
 **Goal:** Find the password for the next level.

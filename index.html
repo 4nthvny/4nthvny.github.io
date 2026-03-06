@@ -31,8 +31,14 @@ permalink: /
       <article class="post-preview">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         {% if post.date %}
-          <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-        {% endif %}
+    {% assign words = post.content | strip_html | number_of_words %}
+    {% assign minutes = words | divided_by: 200 %}
+    {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+
+  <div class="post-date">
+    {{ post.date | date: "%B %d, %Y" }} · {{ minutes }} min read
+  </div>
+{% endif %}
 
         {% assign preview_source = post.excerpt | default: post.content %}
         <p class="post-excerpt">

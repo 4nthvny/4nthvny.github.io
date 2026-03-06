@@ -1,6 +1,7 @@
 ---
 title: Brutus 
-layout: page
+layout: post
+date: 2025-09-17
 permalink: /writeups/htb/brutus
 ---
 

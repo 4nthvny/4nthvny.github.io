@@ -1,6 +1,6 @@
 ---
 title: Blue Team Level 1
-layout: page
+layout: post
 date: 2025-11-15
 permalink: /certifications/BTL1/
 ---

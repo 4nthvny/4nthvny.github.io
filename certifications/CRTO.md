@@ -1,6 +1,6 @@
 ---
 title: Certified Red Team Operator
-layout: page
+layout: post
 date: 2025-11-11
 permalink: /certifications/CRTO/
 ---
