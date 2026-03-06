@@ -14,7 +14,7 @@ I initially wanted to start this project to get a feel for creating detections a
 
 ## What is Detection Engineering?
 
-Detection engineering is the process of designing reliable. high-fidelity alerts that identify malicious behavior within an envirenment. Unlike simple signature-based monitoring, effective detections must balance:
+Detection engineering is the process of designing reliable, high-fidelity alerts that identify malicious behavior within an environment. Unlike simple signature-based monitoring, effective detections must balance:
 
 - Precision (minimizing false positives): The detection should trigger on true malicious behavior and avoid flagging normal admin activity.
 
@@ -36,11 +36,11 @@ For each technique discussed in this project, I followed a structured methodolog
 
 2. Research the TTP to understand the core capability being exercised
 
-3. Determine artifacts that are created that can potentially be used to detect TTPs core capability
+3. Determine artifacts that are created that can potentially be used to detect TTP's core capability
 
 4. Contextualize events to increase alert fidelity
 
-5. Validate, tune, repeat until alert is stable
+5. Validate, tune, and repeat until alert is stable
 
 This methodology focuses on durable TTP behaviors that remain invariant across implementations. 
 
@@ -70,7 +70,7 @@ By detecting at this layer, detections remain effective even if an attacker deci
 
 ## Detection Environment
 
-All detections in this project were developed and tested in a lab I built using Sysmon telemetry and native Windows event logs. Logs were ingested into ELK stack and detection logic is written using Elastic EQL.
+All detections in this project were developed and tested in a lab I built using Sysmon telemetry and native Windows event logs. Logs were ingested into ELK Stack and detection logic is written using Elastic EQL.
 
 This context is important, as field names and query syntax may differ across SIEM platforms.
 
@@ -120,7 +120,7 @@ Adversaries typically introduce Impacket after initial access, when credentials 
 
   - `wmiexec.py` executes commands via Windows Management Instrumentation  
 
-  - `smbexec.py` while also leverages the Windows SCM, executes a cmd.exe process via a temporary service and retrieves output through administrative share file writes
+  - `smbexec.py` while also leveraging the Windows SCM, executes a cmd.exe process via a temporary service and retrieves output through administrative share file writes
 
   - `atexec.py` executes commands using scheduled tasks  
 
@@ -144,7 +144,7 @@ Both `psexec.py` and `smbexec.py` rely on the Windows Service Control Manager fo
 
 ## Wmiexec Overview
 
-Wmiexec relies on the Windows native service Windows Management Instrumentation (WMI). WMI is defined by Microsoft as “the infrastructure for management data and operations on Windows-based operating systems.” It is essentially used to automate administrative tasks on remote computers and supply management data to other parts of the operating system and products. It mainly uses the WMI class `Win32_process` to create processes and supply arguments, similar to running a command in a shell. Impacket’s wmiexec does exactly this. In addition, the “interactive shell” is not actually a shell in technical terms. It is essentially just execution of commands, which output gets written to a writable share and concatenated on the attackers machine then deleted.
+Wmiexec relies on the Windows native service Windows Management Instrumentation (WMI). WMI is defined by Microsoft as “the infrastructure for management data and operations on Windows-based operating systems.” It is essentially used to automate administrative tasks on remote computers and supply management data to other parts of the operating system and products. It mainly uses the WMI class `Win32_process` to create processes and supply arguments, similar to running a command in a shell. Impacket’s wmiexec does exactly this. In addition, the “interactive shell” is not actually a shell in technical terms. It is essentially just execution of commands, which output gets written to a writable share and concatenated on the attacker's machine then deleted.
 
 ## Detection
 
@@ -185,7 +185,7 @@ Above is lines 123-137 of the `wmiexec.py` source code to show a bit of how this
 command += ' 1> ' + '\\\\127.0.0.1\\%s' % self.__share + self.__output + ' 2>&1' 
 ```
 
-Above, line 294 shows the output being written into a writable share, usually `ADMIN$`. This admin share is most of the time mapped to `C:\Windows\`. Note that `wmiexec` has self clean-up implemented so often times the share is deleted after the output has been returned to the attacker unless keyboard interruption occurs. Example:
+Above, line 294 shows the output being written into a writable share, usually `ADMIN$`. This admin share is most of the time mapped to `C:\Windows\`. Note that `wmiexec` has self clean-up implemented, so often times the share is deleted after the output has been returned to the attacker unless keyboard interruption occurs. Example:
 
 <p align="center">
   <img src="{{ "/assets/images/Wmi1.png" | relative_url }}" width="850">
@@ -197,7 +197,7 @@ Above, line 294 shows the output being written into a writable share, usually `A
 
 **4. Contextualize events to increase alert fidelity**
 
-For the sake of this lab, I will be referencing Sysmon telemetry (Event 1) but similar results can be gained by referencing Windows Event 4688.
+For the sake of this lab, I will be referencing Sysmon telemetry (Event 1), but similar results can be gained by referencing Windows Event 4688.
 
 Viewing Sysmon logs shows that `WmiPrvSE.exe` is the parent process of the `cmd.exe` process that gets executed when the `wmiexec` is run.
 
@@ -242,7 +242,7 @@ process where
 ```
 ### Logic Explanation
 
-The first pieces of the detection pulls logs to detect a process that is a child to a WmiPrvSE.exe process. In many cases, the child process will likely be `cmd.exe` or `powershell.exe` which, within execution, come with distinctive flags these interpreters are supplied with. This is depicted within the next set of queries. The remaining query adds additional monitoring for other known suspicious script interpreters `wmiexec` is commonly paired with. 
+The first pieces of the detection pull logs to detect a process that is a child to a WmiPrvSE.exe process. In many cases, the child process will likely be `cmd.exe` or `powershell.exe`, which within execution, come with distinctive flags these interpreters are supplied with. This is depicted within the next set of queries. The remaining query adds additional monitoring for other known suspicious script interpreters `wmiexec` is commonly paired with. 
 
 ---
 
@@ -264,7 +264,7 @@ Impacket’s psexec abuses this mechanism by authenticating over SMB, writing a 
 
 **2. Core capability of the TTP?**
 
-After researching more into `psexec`, the core capability being exercised is remote command execution via Service creation and a Binary upload. The tool authenticates using valid credentials and uploads the said binary to a writeable share usually `ADMIN$` or `C$` and creates a new Windows service that points to that binary, starts the service to execute commands with SYSTEM privileges. This behavior is not unique to just Impacket. Similar service-based execution techniques are implemented by Sysinternals own psexec, Metasploit modules psexec, and other offensive frameworks. 
+After researching more into `psexec`, the core capability being exercised is remote command execution via Service creation and a Binary upload. The tool authenticates using valid credentials and uploads the said binary to a writeable share, usually `ADMIN$` or `C$`, and creates a new Windows service that points to that binary, starts the service to execute commands with SYSTEM privileges. This behavior is not unique to just Impacket. Similar service-based execution techniques are implemented by Sysinternals own psexec, Metasploit modules psexec, and other offensive frameworks. 
 
 **3. Artifacts that are created that can be potentially used to detect the TTP's core capability?**
 
@@ -296,7 +296,7 @@ It could be a good indication to create detections using this behavior, but thes
 
 **4. Contextualize events to increase alert fidelity**
 
-I based my detection off the binary upload and service creation themselves. I decided to correlate them in a sequence and add a timespan of the two being done within 5 minutes.
+I based my detection on the binary upload and service creation themselves. I decided to correlate them in a sequence and add a timespan of the two being done within 5 minutes.
 
 <p align="center">
   <img src="{{ "/assets/images/psexec4.png" | relative_url }}" width="850">
@@ -308,7 +308,7 @@ I based my detection off the binary upload and service creation themselves. I de
 
 We can see the service creation is tied to the same binary executable that gets uploaded. We can use this correlation in our detection to decrease the likelihood of false positives. 
 
-In addition, we can also monitor for 5145 events to see an SMB share getting accessed. Usual target share for psexec is either `ADMIN$` or `C$`.
+In addition, we can also monitor for 5145 events to see an SMB share getting accessed. The usual target share for psexec is either `ADMIN$` or `C$`.
 
 <p align="center">
   <img src="{{ "/assets/images/psexec6.png" | relative_url }}" width="850">
@@ -358,7 +358,7 @@ sequence by host.name with maxspan=5m
 
 ### Logic Explanation
 
-Within this detection, I introduced a max timespan with the line `sequence by host.name with maxspan=5m` which looks for all these events within a 5 minute window. Next I added a query monitory for the 5145 event mentioned earlier looking particularly for `C$` or `ADMIN$` share writes. I also added queries for the uploaded .exe file being the RelativeTargetName within the EventData. The AccessMask and AccessList "0x2" and "%%4417" correspond to a file write. I also decided to include an IP whitelist seen with the `192.168.1.160` IP acting as an "administrative" IP in this environment. Next, I monitored for the .exe upload as previously mentioned and the the service registry entry. When `psexec` creates a new service, it writes a registry entry specifying the path to the uploaded execuatble. Monitoring for this path captures service creation behavior regardless of service or binary name changes. 
+Within this detection, I introduced a max timespan with the line `sequence by host.name with maxspan=5m`, which looks for all these events within a 5 minute window. Next, I added a query monitoring for the 5145 event mentioned earlier, looking particularly for `C$` or `ADMIN$` share writes. I also added queries for the uploaded .exe file being the RelativeTargetName within the EventData. The AccessMask and AccessList "0x2" and "%%4417" correspond to a file write. I also decided to include an IP whitelist, seen with the `192.168.1.160` IP acting as an "administrative" IP in this environment. Next, I monitored for the .exe upload as previously mentioned and the service registry entry. When `psexec` creates a new service, it writes a registry entry specifying the path to the uploaded executable. Monitoring for this path captures service creation behavior regardless of service or binary name changes. 
 
 ---
 
@@ -382,7 +382,7 @@ Because `smbexec` relies heavily on native Windows binaries like `cmd.exe` and a
 
 **2. Core capability of the TTP?**
 
-Through research, I discovered that the core capability of `smbexec` is essentially the remote command execution via temporary service creation and command execution through native binaries. The tool authenticates over SMB, creates a temporary Windows service, configures that service to execute `cmd.exe`, writes attacker-supplied commands into temporary `.bat` file on a writeble share (commonly `ADMIN$` or `C$`), executes that batch file, and retrieves the output over SMB, and deletes the artifacts afterwards.
+Through research, I discovered that the core capability of `smbexec` is essentially the remote command execution via temporary service creation and command execution through native binaries. The tool authenticates over SMB, creates a temporary Windows service, configures that service to execute `cmd.exe`, writes attacker-supplied commands into a temporary `.bat` file on a writeable share (commonly `ADMIN$` or `C$`), executes that batch file, and retrieves the output over SMB, and deletes the artifacts afterwards.
 
 Although it avoids uploading a custom executable, the fundamental behavior is still service-based remote execution. This makes it behaviorally similar to `psexec`, even though the implementation details differ. 
 
@@ -418,7 +418,7 @@ To increase fidelity, I correlated multiple artifacts together that model the ex
 
 **5. Validate, tune, repeat until alert is stable**
 
-To validate this detection, I ,once again, repeatedly executed smbexec within my lab and monitored the consistency of the correlated articfacts. Each execution reliably generated a registry modification, creation of a temporary `.bat` file within `C:\Windows\`, and Event 5145 activity reflecting read, write, and delete operations on accessible shares. 
+To validate this detection, I, once again, repeatedly executed smbexec within my lab and monitored the consistency of the correlated articfacts. Each execution reliably generated a registry modification, creation of a temporary `.bat` file within `C:\Windows\`, and Event 5145 activity reflecting read, write, and delete operations on accessible shares. 
 
 I tuned the correlation window to 1 minute to accurately reflect the rapid execution lifecycle of `smbexec`, where service creation, command execution, output retrieval, and cleanup happen almost immediately. This shorter window improves precision while still allowing for slight execution variance. The Elastic EQL detection is shown below:
 
@@ -455,7 +455,7 @@ winlog.event_data.AccessMask: ("0x1","0x2","0x10080"
 
 ### Logic Explanation 
 
-Once again, beginning with the sequence time constraint we add: `sequence by host.name with maxspan=1m`. In this detection, I monitored for the service registry event first since the service is what creates, executes, and deletes the created `.bat` file for this implementation. Next, I provided a query that monitors for the `.bat` file creation within the path `C:\Windows\`. Following this, I provided the share accessing with event 5145, monitoring for `C$` and `ADMIN$` access, and included AccessMask correlating to read, write, and delete operations. Finally, I added the RelativeTargetname:`__output` which in this case is used for output retreival back to the adversary, and once again provide the administrative IP whitelist. 
+Once again, beginning with the sequence time constraint, we add: `sequence by host.name with maxspan=1m`. In this detection, I monitored for the service registry event first since the service is what creates, executes, and deletes the created `.bat` file for this implementation. Next, I provided a query that monitors for the `.bat` file creation within the path `C:\Windows\`. Following this, I provided the share accessing with event 5145, monitoring for `C$` and `ADMIN$` access, and included AccessMask correlating to read, write, and delete operations. Finally, I added the RelativeTargetname:`__output`, which in this case is used for output retrieval back to the adversary, and once again provided the administrative IP whitelist. 
 
 ---
 
@@ -473,5 +473,5 @@ Also, huge thank you to [Dylan](https://dtsec.us/) and [Brice](https://bri5ee.sh
 - [Impacket Usage & Detection](https://neil-fox.github.io/Impacket-usage-&-detection/)
 - [Tracing WMI Activity](https://learn.microsoft.com/en-us/windows/win32/wmisdk/tracing-wmi-activity)
 - [Olafhartong - Sysmon-modular config](https://github.com/olafhartong/sysmon-modular)
-- [Jared Atkinson-SpectreOps Capabilty Abstraction](https://specterops.io/blog/2020/02/06/capability-abstraction/)
+- [Jared Atkinson-SpectreOps Capability Abstraction](https://specterops.io/blog/2020/02/06/capability-abstraction/)
 - [Jared Atkinson-SpectreOps Playing Detection with a Full Deck](https://specterops.io/blog/2021/08/16/playing-detection-with-a-full-deck/)
