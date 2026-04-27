@@ -5,6 +5,12 @@ layout: page
 ## About Me
 Hi, I'm Anthony, I am currently a student at Cal Poly Pomona studying Information Security. The main point of this website is to show off some of my work, give advice based on things I've done within the security space, and just to yap about things I think are cool. Right now, I'm very interested in Detection Engineering and Threat Hunting. I want to make an impact in security, plus I like both offensive and defensive stuff, so I think it's a good mix.
 
+---
+
+# Experience
+
+SOC Analyst Intern - SoFi (Jun 2026 - Aug 2026)
+
 ## Certifications 
 
 [CompTIA Security+](https://www.comptia.org/en-us/certifications/security/) | [Red Team Operator](https://www.zeropointsecurity.co.uk/course/red-team-ops) | [Blue Team Level 1](https://www.securityblue.team/certifications/blue-team-level-1) 
