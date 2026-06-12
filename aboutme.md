@@ -9,7 +9,7 @@ Hi, I'm Anthony, I am currently a student at Cal Poly Pomona studying Informatio
 
 ## Experience
 
-SOC Analyst Intern @ SoFi (Jun 2026 - Aug 2026)
+Security Analyst Intern @ SoFi (Jun 2026 - Aug 2026)
 
 --- 
 
