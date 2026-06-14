@@ -5,6 +5,34 @@ styles: true
 
 @import "alembic";
 
+/* FIXED SHRINKING HEADER */
+:root { --header-h: 64px; }
+
+.header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 500 !important;
+  transition: box-shadow 0.2s, background 0.2s !important;
+}
+.header .container {
+  transition: padding 0.2s !important;
+}
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.92) !important;
+  box-shadow: 0 1px 0 rgba(57, 255, 20, 0.15) !important;
+  backdrop-filter: blur(6px) !important;
+}
+.header.scrolled .container {
+  padding-top: 0.35rem !important;
+  padding-bottom: 0.35rem !important;
+}
+
+body { padding-top: var(--header-h) !important; }
+.post-toc { top: calc(var(--header-h) + 1rem) !important; }
+
 /* PAGE LAYOUT */
 .page,
 .page-content {
@@ -78,14 +106,14 @@ styles: true
 /* TOC SIDEBAR */
 .post-toc {
   position: sticky;
-  top: 1.5rem;
-  flex: 0 0 210px;
-  width: 210px;
+  top: calc(var(--header-h) + 1rem);
+  flex: 0 0 200px;
+  width: 200px;
   background: #0d0d0d;
   border: 1px solid rgba(57, 255, 20, 0.3);
   border-radius: 6px;
-  padding: 0.9rem 0.5rem 0.9rem 1rem;
-  max-height: calc(100vh - 3rem);
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  max-height: calc(100vh - var(--header-h) - 2rem);
   overflow: hidden;
   display: none;
   flex-direction: column;

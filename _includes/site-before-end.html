@@ -1,3 +1,16 @@
+<!-- STICKY HEADER SHRINK -->
+<script>
+  (function () {
+    var header = document.querySelector('.header');
+    if (!header) return;
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
 <div class="lightbox-overlay" id="lightbox">
   <img id="lightbox-img" src="" alt="">
 </div>
@@ -106,18 +119,48 @@
       e.preventDefault();
     }, { passive: false });
 
-    /* scroll spy */
+    /* scroll spy — highlight the section currently being read */
     var items = Array.from(list.querySelectorAll('li'));
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var id = entry.target.id;
-        items.forEach(function (li) {
-          li.classList.toggle('active', li.querySelector('a').getAttribute('href') === '#' + id);
-        });
+    var activeIdx = -1;
+
+    function setActive(idx) {
+      if (idx === activeIdx) return;
+      activeIdx = idx;
+      items.forEach(function (li, i) {
+        li.classList.toggle('active', i === idx);
       });
-    }, { rootMargin: '-10% 0px -80% 0px' });
-    headings.forEach(function (h) { observer.observe(h); });
+      // keep the active item visible inside the TOC scroll area
+      var li = items[idx];
+      if (li) {
+        var liTop = li.offsetTop, liBot = liTop + li.offsetHeight;
+        if (liTop < scrollEl.scrollTop) {
+          scrollEl.scrollTop = liTop - 8;
+        } else if (liBot > scrollEl.scrollTop + scrollEl.clientHeight) {
+          scrollEl.scrollTop = liBot - scrollEl.clientHeight + 8;
+        }
+      }
+    }
+
+    function onSpy() {
+      var offset = 140; // px from top of viewport that counts as "current"
+      var idx = 0;
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top - offset <= 0) {
+          idx = i;
+        } else {
+          break;
+        }
+      }
+      // at the very bottom of the page, force-select the last heading
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+        idx = headings.length - 1;
+      }
+      setActive(idx);
+    }
+
+    window.addEventListener('scroll', onSpy, { passive: true });
+    window.addEventListener('resize', onSpy);
+    onSpy();
   })();
 </script>
 
