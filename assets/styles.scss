@@ -48,3 +48,209 @@ styles: true
   }
 }
 
+/* POST LAYOUT WITH TOC SIDEBAR */
+.post-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 2rem;
+  padding: 0 3vw !important;
+}
+
+.post-layout .content {
+  flex: 1 1 auto !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* GLOBAL CUSTOM SCROLLBAR (terminal, code blocks) */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: #1a1a1a; border-radius: 3px; }
+::-webkit-scrollbar-thumb    { background: #ffffff; border-radius: 3px; }
+::-webkit-scrollbar-corner   { background: #1a1a1a; }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #1a1a1a;
+}
+
+/* TOC SIDEBAR */
+.post-toc {
+  position: sticky;
+  top: 1.5rem;
+  flex: 0 0 210px;
+  width: 210px;
+  background: #0d0d0d;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  border-radius: 6px;
+  padding: 0.9rem 0.5rem 0.9rem 1rem;
+  max-height: calc(100vh - 3rem);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+}
+
+.post-toc.has-items { display: flex; }
+
+.post-toc__header {
+  font-family: "Fira Code", monospace;
+  font-size: 0.78rem;
+  color: #f7f6f2;
+  opacity: 0.75;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* inner scroll area — native scrollbar hidden, custom one overlaid */
+.post-toc__scroll {
+  overflow-y: scroll;
+  flex: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-right: 10px;
+}
+.post-toc__scroll::-webkit-scrollbar { display: none; }
+
+.post-toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: toc-counter;
+}
+
+.post-toc__list li {
+  counter-increment: toc-counter;
+  padding: 0.28rem 0 0.28rem 0.5rem;
+  border-left: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.post-toc__list li.active { border-left-color: #39ff14; }
+
+.post-toc__list li::before {
+  content: counter(toc-counter) ". ";
+  color: rgba(57, 255, 20, 0.6);
+  font-size: 0.72rem;
+  font-family: "Fira Code", monospace;
+}
+
+.post-toc__list a {
+  color: rgba(247, 246, 242, 0.6);
+  font-size: 0.74rem;
+  font-family: "Fira Code", monospace;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+
+.post-toc__list li.active a,
+.post-toc__list a:hover { color: #39ff14; }
+
+.post-toc__list li.toc-h3 { padding-left: 1.2rem; }
+
+/* custom scrollbar track + thumb */
+.toc-track {
+  position: absolute;
+  right: 4px;
+  top: 2.4rem;
+  bottom: 6px;
+  width: 5px;
+  background: #1a1a1a;
+  border-radius: 3px;
+  display: none;
+}
+.toc-track.visible { display: block; }
+
+.toc-thumb {
+  position: absolute;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  min-height: 20px;
+  top: 0;
+}
+
+@media (max-width: 900px) {
+  .post-toc { display: none !important; }
+  .post-layout { padding: 0 5vw !important; }
+}
+
+/* CODE BLOCK HORIZONTAL SCROLLBAR */
+.highlight pre::-webkit-scrollbar { display: none; }
+.code-htrack {
+  display: none;
+  position: relative;
+  height: 5px;
+  background: #1a1a1a;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+.code-hthumb {
+  position: absolute;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  top: 0;
+  left: 0;
+  min-width: 30px;
+}
+
+/* CENTER IMAGES IN POSTS */
+.article--post img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  cursor: zoom-in;
+}
+
+
+/* LIGHTBOX */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-overlay img {
+  display: block !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  cursor: default !important;
+  margin: 0 !important;
+}
+
+/* STANDOUT TITLES ON PAGES (experience, competition headings) */
+.article--page strong {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+}
+
+/* ABOUT ME HERO IMAGE */
+.about-hero {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #39ff14;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+

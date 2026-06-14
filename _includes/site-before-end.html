@@ -1,1 +1,231 @@
-<!-- Overwrite this file with code you want before the closing body tag -->
+<div class="lightbox-overlay" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('lightbox');
+    var overlayImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.article--post img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        overlayImg.src = img.src;
+        overlayImg.alt = img.alt;
+        overlay.classList.add('active');
+      });
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target !== overlayImg) {
+        overlay.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') overlay.classList.remove('active');
+    });
+  })();
+</script>
+
+<!-- POST TABLE OF CONTENTS -->
+<script>
+  (function () {
+    var toc      = document.getElementById('post-toc');
+    var list     = document.getElementById('toc-list');
+    var scrollEl = document.getElementById('toc-scroll');
+    var track    = document.getElementById('toc-track');
+    var thumb    = document.getElementById('toc-thumb');
+    if (!toc || !list || !scrollEl || !track || !thumb) return;
+
+    var article = document.querySelector('.article--post');
+    if (!article) return;
+
+    var headings = Array.from(article.querySelectorAll('h2, h3'));
+    if (headings.length < 2) return;
+
+    /* build list */
+    headings.forEach(function (h) {
+      if (!h.id) {
+        h.id = h.textContent.trim().toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      }
+      var li = document.createElement('li');
+      if (h.tagName === 'H3') li.classList.add('toc-h3');
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, null, '#' + h.id);
+      });
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+
+    toc.classList.add('has-items');
+
+    /* custom scrollbar */
+    function updateThumb() {
+      var sh = scrollEl.scrollHeight, ch = scrollEl.clientHeight;
+      if (sh <= ch) { track.classList.remove('visible'); return; }
+      track.classList.add('visible');
+      var trackH  = track.clientHeight;
+      var thumbH  = Math.max(20, (ch / sh) * trackH);
+      var thumbTop = (scrollEl.scrollTop / (sh - ch)) * (trackH - thumbH);
+      thumb.style.height = thumbH + 'px';
+      thumb.style.top    = thumbTop + 'px';
+    }
+
+    scrollEl.addEventListener('scroll', updateThumb);
+    setTimeout(updateThumb, 50);
+
+    /* drag thumb with pointer capture so cursor stays in sync */
+    var drag = null;
+    thumb.addEventListener('pointerdown', function (e) {
+      drag = { startY: e.clientY, startScroll: scrollEl.scrollTop };
+      thumb.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    thumb.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dot = document.getElementById('cursor-dot');
+      if (dot) { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; }
+      var trackH = track.clientHeight;
+      var thumbH = thumb.clientHeight;
+      var maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+      var ratio = maxScroll / (trackH - thumbH);
+      scrollEl.scrollTop = drag.startScroll + (e.clientY - drag.startY) * ratio;
+    });
+    thumb.addEventListener('pointerup',     function () { drag = null; });
+    thumb.addEventListener('pointercancel', function () { drag = null; });
+
+    /* wheel forwarding */
+    toc.addEventListener('wheel', function (e) {
+      scrollEl.scrollTop += e.deltaY;
+      e.preventDefault();
+    }, { passive: false });
+
+    /* scroll spy */
+    var items = Array.from(list.querySelectorAll('li'));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        items.forEach(function (li) {
+          li.classList.toggle('active', li.querySelector('a').getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    headings.forEach(function (h) { observer.observe(h); });
+  })();
+</script>
+
+<!-- CUSTOM HORIZONTAL SCROLLBARS FOR CODE BLOCKS -->
+<script>
+  (function () {
+    document.querySelectorAll('.highlight').forEach(function (highlight) {
+      var pre = highlight.querySelector('pre');
+      if (!pre) return;
+
+      highlight.style.position = 'relative';
+      pre.style.overflowX = 'scroll';
+      pre.style.scrollbarWidth = 'none';
+      pre.style.msOverflowStyle = 'none';
+
+      var track = document.createElement('div');
+      track.className = 'code-htrack';
+      var thumb = document.createElement('div');
+      thumb.className = 'code-hthumb';
+      track.appendChild(thumb);
+      highlight.appendChild(track);
+
+      function updateThumb() {
+        var sw = pre.scrollWidth, cw = pre.clientWidth;
+        if (sw <= cw) { track.style.display = 'none'; return; }
+        track.style.display = 'block';
+        var trackW  = track.clientWidth;
+        var thumbW  = Math.max(30, (cw / sw) * trackW);
+        var thumbLeft = (pre.scrollLeft / (sw - cw)) * (trackW - thumbW);
+        thumb.style.width  = thumbW + 'px';
+        thumb.style.left   = thumbLeft + 'px';
+      }
+
+      pre.addEventListener('scroll', updateThumb);
+      setTimeout(updateThumb, 100);
+
+      var drag = null;
+      thumb.addEventListener('pointerdown', function (e) {
+        drag = { startX: e.clientX, startScroll: pre.scrollLeft };
+        thumb.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      thumb.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        var dot = document.getElementById('cursor-dot');
+        if (dot) { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; }
+        var trackW  = track.clientWidth;
+        var thumbW  = thumb.clientWidth;
+        var maxScroll = pre.scrollWidth - pre.clientWidth;
+        var ratio = maxScroll / (trackW - thumbW);
+        pre.scrollLeft = drag.startScroll + (e.clientX - drag.startX) * ratio;
+      });
+      thumb.addEventListener('pointerup',     function () { drag = null; });
+      thumb.addEventListener('pointercancel', function () { drag = null; });
+    });
+  })();
+</script>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+
+<style>
+  * { cursor: none !important; }
+
+  #cursor-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #39ff14;
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    transition: width .15s ease, height .15s ease, background .15s ease, border .15s ease, opacity .2s ease;
+    box-shadow: 0 0 6px rgba(57,255,20,0.95), 0 0 14px rgba(57,255,20,0.55), 0 0 28px rgba(57,255,20,0.20);
+  }
+</style>
+
+<script>
+  (function () {
+    const dot = document.getElementById('cursor-dot');
+
+    window.addEventListener('pointermove', (e) => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; });
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, [role="button"]')) {
+        dot.style.width = '20px';
+        dot.style.height = '20px';
+        dot.style.background = 'transparent';
+        dot.style.border = '2px solid #39ff14';
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest('a, button, input, textarea, select, [role="button"]')) {
+        dot.style.width = '10px';
+        dot.style.height = '10px';
+        dot.style.background = '#39ff14';
+        dot.style.border = 'none';
+      }
+    });
+  })();
+</script>

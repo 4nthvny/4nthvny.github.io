@@ -3,10 +3,11 @@ title: Blue Team Level 1
 layout: post
 date: 2025-11-15
 permalink: /certifications/BTL1/
+image: /assets/images/btl1.png
 ---
 ## My Honest Review
 ---
-<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/740e5292-ed7e-436e-9bbb-4f10cdbe433c" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/740e5292-ed7e-436e-9bbb-4f10cdbe433c" />
 
 ---
 ## Background 

@@ -2,7 +2,7 @@
 title: Brutus 
 layout: post
 date: 2025-09-17
-permalink: /writeups/htb/brutus
+permalink: /writeups/htb/brutus/
 ---
 
 # Brutus Sherlock Write-Up

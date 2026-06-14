@@ -2,6 +2,7 @@
 title: Detection Engineering
 layout: post
 date: 2026-02-28
+image: /assets/images/detection_penguin.gif
 read_time: 20 minutes
 permalink: /writeups/projects/detection-engineering/
 ---

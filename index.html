@@ -29,21 +29,26 @@ permalink: /
 
     {%- for post in cards limit:2 -%}
       <article class="post-preview">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {% if post.date %}
-    {% assign words = post.content | strip_html | number_of_words %}
-    {% assign minutes = words | divided_by: 200 %}
-    {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-
-  <div class="post-date">
-    {{ post.date | date: "%B %d, %Y" }} · {{ minutes }} min read
-  </div>
-{% endif %}
-
-        {% assign preview_source = post.excerpt | default: post.content %}
-        <p class="post-excerpt">
-          {{ preview_source | strip_html | truncate: 220 }}
-        </p>
+        <div class="post-preview__body">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.date %}
+          {% assign words = post.content | strip_html | number_of_words %}
+          {% assign minutes = words | divided_by: 200 %}
+          {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+          <div class="post-date">
+            {{ post.date | date: "%B %d, %Y" }} · {{ minutes }} min read
+          </div>
+          {% endif %}
+          {% assign preview_source = post.excerpt | default: post.content %}
+          <p class="post-excerpt">
+            {{ preview_source | strip_html | truncate: 220 }}
+          </p>
+        </div>
+        {% if post.image %}
+        <a href="{{ post.url | relative_url }}" class="post-preview__thumb-link">
+          <img class="post-preview__thumb" src="{{ post.image }}" alt="{{ post.title }}">
+        </a>
+        {% endif %}
       </article>
     {%- endfor -%}
   </div>
@@ -52,7 +57,20 @@ permalink: /
   <div class="terminal-col">
 
     <!-- START: Web Terminal -->
-    <div id="terminal" aria-label="web terminal"></div>
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="terminal-title">anthony@home: ~</span>
+      </div>
+      <div class="term-wrap">
+        <div id="terminal" aria-label="web terminal"></div>
+        <div class="term-track" id="term-track">
+          <div class="term-thumb" id="term-thumb"></div>
+        </div>
+      </div>
+    </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -211,13 +229,60 @@ permalink: /
       // boot
       writeLine(INTRO);
       writeInputLine();
+
+      // custom scrollbar
+      var termTrack = document.getElementById('term-track');
+      var termThumb = document.getElementById('term-thumb');
+
+      function updateTermThumb() {
+        var sh = term.scrollHeight, ch = term.clientHeight;
+        if (sh <= ch) { termTrack.classList.remove('visible'); return; }
+        termTrack.classList.add('visible');
+        var trackH  = termTrack.clientHeight;
+        var thumbH  = Math.max(20, (ch / sh) * trackH);
+        var thumbTop = (term.scrollTop / (sh - ch)) * (trackH - thumbH);
+        termThumb.style.height = thumbH + 'px';
+        termThumb.style.top    = thumbTop + 'px';
+      }
+
+      term.addEventListener('scroll', updateTermThumb);
+      setTimeout(updateTermThumb, 100);
+
+      var termDrag = null;
+      termThumb.addEventListener('pointerdown', function (e) {
+        termDrag = { startY: e.clientY, startScroll: term.scrollTop };
+        termThumb.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      termThumb.addEventListener('pointermove', function (e) {
+        if (!termDrag) return;
+        var dot = document.getElementById('cursor-dot');
+        if (dot) { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; }
+        var trackH  = termTrack.clientHeight;
+        var thumbH  = termThumb.clientHeight;
+        var maxScroll = term.scrollHeight - term.clientHeight;
+        var ratio = maxScroll / (trackH - thumbH);
+        term.scrollTop = termDrag.startScroll + (e.clientY - termDrag.startY) * ratio;
+      });
+      termThumb.addEventListener('pointerup',     function () { termDrag = null; });
+      termThumb.addEventListener('pointercancel', function () { termDrag = null; });
+
+      // keep thumb in sync when terminal content grows
+      var mo = new MutationObserver(updateTermThumb);
+      mo.observe(term, { childList: true, subtree: true });
     });
     </script>
     <!-- END: Web Terminal -->
 
-    <div class="typeset" style="text-align:center; margin-top:2rem;">
-      {% include button.html text="GitHub" icon="github" link="https://github.com/4nthvny" color="#0366d6" %}
-      {% include button.html text="LinkedIn" icon="linkedin" link="https://www.linkedin.com/in/anthony-d-rivera" color="#0077B5" %}
+    <div class="social-links">
+      <a class="social-btn social-btn--github" href="https://github.com/4nthvny" target="_blank" rel="noopener">
+        {% include icon.html id="github" width="18" height="18" %}
+        <span>GitHub</span>
+      </a>
+      <a class="social-btn social-btn--linkedin" href="https://www.linkedin.com/in/anthony-d-rivera" target="_blank" rel="noopener">
+        {% include icon.html id="linkedin" width="18" height="18" %}
+        <span>LinkedIn</span>
+      </a>
     </div>
 
   </div>
@@ -287,10 +352,26 @@ permalink: /
   }
 
   .post-preview {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #222;
   }
+
+  .post-preview__thumb-link { flex-shrink: 0; display: block; }
+
+  .post-preview__thumb {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(57,255,20,0.25);
+  }
+
+  .post-preview__body { flex: 1 1 auto; min-width: 0; }
 
   .post-preview a {
     color: #39ff14;
@@ -323,18 +404,108 @@ permalink: /
     gap: 1.5rem;
   }
 
+  /* === TERMINAL WINDOW CHROME === */
+  .terminal-window {
+    overflow: hidden;
+    border: 1px solid #39ff14;
+  }
+
+  .terminal-titlebar {
+    background: #0d0d0d;
+    padding: 9px 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; opacity: 0.8; }
+  .dot-red    { background: #ff6b6b; }
+  .dot-yellow { background: #ffd93d; }
+  .dot-green  { background: #a8ff78; }
+
+  .terminal-title {
+    margin: 0 auto;
+    font-family: "Fira Code", monospace;
+    font-size: 0.75rem;
+    opacity: 0.45;
+  }
+
+  .term-wrap {
+    position: relative;
+  }
+
   #terminal {
     background: #000;
     color: #f7f6f2;
     padding: 16px;
-    border: 2px solid #39ff14;
+    border: none;
     font-family: "Fira Code", ui-monospace, monospace;
-    line-height: 1.3;          /* tighter line spacing */
+    line-height: 1.3;
     width: 100%;
     height: 500px;
-    max-height: 500px;         /* enough height but not huge */
-    overflow-y: auto;
+    max-height: 500px;
+    overflow-y: scroll;
     box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #terminal::-webkit-scrollbar { display: none; }
+
+  .term-track {
+    position: absolute;
+    right: 3px;
+    top: 4px;
+    bottom: 4px;
+    width: 5px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    display: none;
+  }
+  .term-track.visible { display: block; }
+  .term-thumb {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    min-height: 20px;
+    top: 0;
+  }
+
+  /* === SOCIAL BUTTONS === */
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    background: rgba(57, 255, 20, 0.05);
+    color: #f7f6f2;
+    text-decoration: none;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+
+  .social-btn .icon { flex-shrink: 0; fill: currentColor; }
+
+  .social-btn--github:hover {
+    border-color: rgba(200, 200, 200, 0.65);
+    background: rgba(200, 200, 200, 0.07);
+    transform: translateY(-2px);
+  }
+
+  .social-btn--linkedin:hover {
+    border-color: rgba(0, 119, 181, 0.8);
+    background: rgba(0, 119, 181, 0.1);
+    transform: translateY(-2px);
   }
 
   .line {
