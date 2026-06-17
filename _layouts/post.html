@@ -6,7 +6,7 @@ layout: default
 
 <main class="main container post-layout">
 
-  <aside class="post-toc" id="post-toc" aria-label="Table of contents">
+  <aside class="post-toc" id="post-toc" aria-label="Table of contents" data-toc-headings="{{ page.toc_headings | default: 'h2, h3' }}">
     <div class="post-toc__header">&#9776; Content</div>
     <div class="post-toc__scroll" id="toc-scroll">
       <ol id="toc-list" class="post-toc__list"></ol>

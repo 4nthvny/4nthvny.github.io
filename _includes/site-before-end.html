@@ -3,6 +3,19 @@
   (function () {
     var header = document.querySelector('.header');
     if (!header) return;
+
+    // measure the real (expanded) header height so content + TOC clear it
+    function setHeaderVar() {
+      var wasScrolled = header.classList.contains('scrolled');
+      header.classList.remove('scrolled');
+      var h = header.offsetHeight;
+      if (wasScrolled) header.classList.add('scrolled');
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setHeaderVar();
+    window.addEventListener('load', setHeaderVar);
+    window.addEventListener('resize', setHeaderVar);
+
     function onScroll() {
       header.classList.toggle('scrolled', window.scrollY > 40);
     }
@@ -53,7 +66,8 @@
     var article = document.querySelector('.article--post');
     if (!article) return;
 
-    var headings = Array.from(article.querySelectorAll('h2, h3'));
+    var selector = toc.getAttribute('data-toc-headings') || 'h2, h3';
+    var headings = Array.from(article.querySelectorAll(selector));
     if (headings.length < 2) return;
 
     /* build list */
