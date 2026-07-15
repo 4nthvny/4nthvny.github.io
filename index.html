@@ -78,9 +78,9 @@ permalink: /
       const PROMPT = 'anthony@home:~$';
       const INTRO  = 'Uhh.. Wut-amd64 x86_64 GNU/Linux\nType "help" for commands';
 
-      // demo file contents
+      // demo file contents — base64 of the flag "anthony{9244165745}"
       const FILES = {
-        'flag.txt': 'Y2hhdCB3aWxsIGkgZ2V0IGhpcmVkPw==' // base64 of "chat will i get hired?"
+        'flag.txt': 'YW50aG9ueXs5MjQ0MTY1NzQ1fQ=='
       };
 
       const HISTORY = [];
@@ -174,10 +174,10 @@ permalink: /
 
         const simple = {
           'help': () => `Available commands:
-- whoami 
-- ls 
-- cat flag.txt
-- base64 
+- whoami
+- ls
+- cat
+- base64
 - certs`,
           'whoami': () => 'Hi, Im Anthony :D',
           'ls': () => 'flag.txt',
@@ -188,22 +188,38 @@ permalink: /
           'clear': () => { term.innerHTML = ''; return ''; }
         };
 
-        // base64 command
+        // base64 [-d] <file>
         if (cmd === 'base64') {
-          writeLine('chat will i get hired?');
+          let decode = false;
+          let file = null;
+          parts.forEach(function (p) {
+            if (p === '-d' || p === '--decode') decode = true;
+            else if (p) file = p.toLowerCase();
+          });
+          if (!file) {
+            writeLine('usage: base64 [-d] <file>');
+          } else if (!(file in FILES)) {
+            writeLine(`base64: ${file}: No such file or directory`);
+          } else {
+            try {
+              writeLine(decode ? atob(FILES[file]) : btoa(FILES[file]));
+            } catch (e) {
+              writeLine('base64: invalid input');
+            }
+          }
           writeInputLine();
           return;
         }
 
-        // cat flag.txt
+        // cat <file>
         if (cmd === 'cat') {
           const target = (parts.shift() || '').toLowerCase();
           if (!target) {
             writeLine('usage: cat <file>');
-          } else if (target === 'flag.txt') {
-            writeLine(FILES['flag.txt']);
+          } else if (target in FILES) {
+            writeLine(FILES[target]);
           } else {
-            writeLine(`cat: ${target}: No such file`);
+            writeLine(`cat: ${target}: No such file or directory`);
           }
           writeInputLine();
           return;
