@@ -12,7 +12,7 @@ Hi, I'm Anthony, I am currently a student at Cal Poly Pomona studying Informatio
 
 ## Experience
 
-**Security Analyst Intern @ SoFi (Jun 2026 - Aug 2026)** <img src="/assets/images/sofi.png" alt="SoFi" style="height: 1.2em; vertical-align: middle; border-radius: 3px;">
+<img src="/assets/images/sofi.png" alt="SoFi" style="height: 1.2em; vertical-align: middle; border-radius: 3px;"> **Security Analyst Intern @ SoFi (Jun 2026 - Aug 2026)**
 
 --- 
 
