@@ -28,6 +28,8 @@ Collegiate Penetration Testing Competition (CPTC) (Jun 2025 - Present)
 
 - Performed OSINT and source code analysis on public repositories to identify initial access vectors. Exploited misconfigured databases, web apps, Active Directory, and default credentials. Audited fictional organizations for security and compliance gaps, delivering reports on risks, issues, and remediation strategies to executives.
 
+[View our report here.](/assets/reports/CPTCGlobalsReport.pdf)
+
 Collegiate Cyber Defense Competition (CCDC) (Jun 2025 - Present)
 <p align="center" width="100%">
     <img width="15%" src="https://github.com/user-attachments/assets/176ec487-cd07-426f-97b7-a91090e1d26d"> 
