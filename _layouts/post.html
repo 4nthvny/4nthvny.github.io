@@ -4,7 +4,17 @@ layout: default
 
 {% include site-header.html %}
 
-<main class="main container">
+<main class="main container post-layout">
+
+  <aside class="post-toc" id="post-toc" aria-label="Table of contents" data-toc-headings="{{ page.toc_headings | default: 'h2, h3' }}">
+    <div class="post-toc__header">&#9776; Content</div>
+    <div class="post-toc__scroll" id="toc-scroll">
+      <ol id="toc-list" class="post-toc__list"></ol>
+    </div>
+    <div class="toc-track" id="toc-track">
+      <div class="toc-thumb" id="toc-thumb"></div>
+    </div>
+  </aside>
 
   <article class="article article--post content typeset">
 

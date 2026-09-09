@@ -6,7 +6,7 @@ permalink: /certifications/security+/
 ---
 # My Honest Review 
 --- 
-<img width="838" height="702" alt="image" src="https://github.com/user-attachments/assets/2b47fa74-d4e7-49c6-a767-78f1006a8b7c" />
+<img width="400" height="335" alt="image" src="https://github.com/user-attachments/assets/2b47fa74-d4e7-49c6-a767-78f1006a8b7c" />
 
 ---
 ## Background

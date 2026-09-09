@@ -2,7 +2,7 @@
 title: Fluffy 
 layout: post
 date: 2025-09-17
-permalink: /writeups/htb/fluffy
+permalink: /writeups/htb/fluffy/
 ---
 
  **Nmap :p**

@@ -2,13 +2,15 @@
 title: Detection Engineering
 layout: post
 date: 2026-02-28
+image: /assets/images/detection_penguin.gif
 read_time: 20 minutes
 permalink: /writeups/projects/detection-engineering/
+toc_headings: "h2"
 ---
 
 ## Introduction
 
-I initially wanted to start this project to get a feel for creating detections and how detections actually work. I fell in love with the craft. As someone who really couldn’t decide which aspect of security I enjoyed more, offensive or defensive, I thought detection engineering was the perfect middle point where I could continue to build my knowledge on both ends and use it to make a valuable impact within an organization. I grew more and more fascinated through my research and my constant feeling to dig deeper and ask more questions. I hope to use the lab I’ve created to dive deeper into building detections for more complex attacks and give real insights into how others can build something similar or use my work as a reference point to build off. Starting off my cybersecurity journey doing HackTheBox and offensive security labs, Impacket is something I was introduced to very early on. Because of how commonly it appears in real adversarial scenarios, I decided to focus this project on understanding how several Impacket lateral movement techniques work and how reliable detections can be built for them. The goal of this project was to break down the underlying behavior of these techniques, identify the artifacts they produce, and develop detections based on those behaviors. 
+I initially wanted to start this project to get a feel for creating detections and how detections actually work. As someone who really couldn’t decide which aspect of security I enjoyed more, offensive or defensive, I thought detection engineering was the perfect middle point where I could continue to build my knowledge on both ends and use it to make a valuable impact within an organization. I grew more and more fascinated through my research and my constant feeling to dig deeper and ask more questions. I hope to use the lab I’ve created to dive deeper into building detections for more complex attacks and give real insights into how others can build something similar or use my work as a reference point to build off. Starting off my cybersecurity journey doing HackTheBox and offensive security labs, Impacket is something I was introduced to very early on. Because of how commonly it appears in real adversarial scenarios, I decided to focus this project on understanding how several Impacket lateral movement techniques work and how reliable detections can be built for them. The goal of this project was to break down the underlying behavior of these techniques, identify the artifacts they produce, and develop detections based on those behaviors. 
 
 ---
 
@@ -140,9 +142,9 @@ Both `psexec.py` and `smbexec.py` rely on the Windows Service Control Manager fo
 
 ---
 
-# Wmiexec
+## Wmiexec
 
-## Wmiexec Overview
+### Wmiexec Overview
 
 Wmiexec relies on the Windows native service Windows Management Instrumentation (WMI). WMI is defined by Microsoft as “the infrastructure for management data and operations on Windows-based operating systems.” It is essentially used to automate administrative tasks on remote computers and supply management data to other parts of the operating system and products. It mainly uses the WMI class `Win32_process` to create processes and supply arguments, similar to running a command in a shell. Impacket’s wmiexec does exactly this. In addition, the “interactive shell” is not actually a shell in technical terms. It is essentially just execution of commands, which output gets written to a writable share and concatenated on the attacker's machine then deleted.
 
@@ -246,9 +248,9 @@ The first pieces of the detection pull logs to detect a process that is a child 
 
 ---
 
-# Psexec
+## Psexec
 
-## Psexec Overview
+### Psexec Overview
 
 Psexec relies on the Windows Service Control Manager (SCM) and the SMB protocol to perform remote command execution. The Service Control Manager is responsible for creating and managing Windows services, a function commonly used by administrators for remote system management.
 
@@ -362,9 +364,9 @@ Within this detection, I introduced a max timespan with the line `sequence by ho
 
 ---
 
-# Smbexec
+## Smbexec
 
-## Smbexec Overview
+### Smbexec Overview
 
 Impacket’s `smbexec` also leverages the SMB protocol for remote command execution, but instead of uploading a standalone service binary like `psexec`, it uses a more fileless-style approach that relies on Windows command execution through the Service Control Manager (SCM).
 

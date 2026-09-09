@@ -7,6 +7,6 @@ Below are all my public cybersecurity writeups:
 
 Choose a category below:
 
-- [Bandit (OverTheWire)](/writeups/bandit/index.md)
+- [Bandit (OverTheWire)](/writeups/bandit/)
 - [Hack The Box](/writeups/htb/) 
 - [Projects](/writeups/projects/)
