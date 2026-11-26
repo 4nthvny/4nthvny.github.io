@@ -94,7 +94,7 @@ lang: en-GB # Set the site language
 title: "Anthony's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo2 (1).png" # Site logo, also used in jekyll-seo-tag
 description: "" # Site description and default description, also used in jekyll-seo-tag
-url: "https://alembic.darn.es" # Site url, also used in jekyll-seo-tag
+url: "https://4nthvny.com" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/davidda"
 email: "anthony.d.rivera@outlook.com"
